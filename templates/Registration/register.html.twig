@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte | Entre 2 Rives{% endblock %}
+
+{% block body %}
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <h1 class="mb-4">Créer un compte</h1>
+
+                {{ form_start(registrationForm) }}
+                {{ form_errors(registrationForm) }}
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.firstName, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(registrationForm.firstName, {
+                        attr: {
+                            class: 'form-control',
+                            autocomplete: 'given-name'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.firstName) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.lastName, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(registrationForm.lastName, {
+                        attr: {
+                            class: 'form-control',
+                            autocomplete: 'family-name'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.lastName) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.phone, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(registrationForm.phone, {
+                        attr: {
+                            class: 'form-control',
+                            autocomplete: 'tel'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.phone) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.email, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(registrationForm.email, {
+                        attr: {
+                            class: 'form-control',
+                            autocomplete: 'email'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.email) }}
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.plainPassword.first, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(registrationForm.plainPassword.first, {
+                        attr: {
+                            class: 'form-control',
+                            autocomplete: 'new-password',
+                            'aria-describedby': 'password-help'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.plainPassword.first) }}
+
+                    <p id="password-help" class="form-text">
+                        Le mot de passe doit contenir au moins 8 caractères,
+                        une majuscule, un chiffre et un caractère spécial.
+                    </p>
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.plainPassword.second, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(registrationForm.plainPassword.second, {
+                        attr: {
+                            class: 'form-control',
+                            autocomplete: 'new-password'
+                        }
+                    }) }}
+
+                    {{ form_errors(registrationForm.plainPassword.second) }}
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-check">
+                        {{ form_widget(registrationForm.acceptTerms, {
+                            attr: {
+                                class: 'form-check-input'
+                            }
+                        }) }}
+
+                        <label
+                            class="form-check-label"
+                            for="{{ registrationForm.acceptTerms.vars.id }}"
+                        >
+                            J'accepte les conditions générales d'utilisation
+                        </label>
+                    </div>
+
+                    {{ form_errors(registrationForm.acceptTerms) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary-custom">
+                    Créer mon compte
+                </button>
+
+                {{ form_end(registrationForm) }}
+
+                <p class="mt-4">
+                    Vous avez déjà un compte ?
+                    <a href="{{ path('app_login') }}">
+                        Se connecter
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
