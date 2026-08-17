@@ -1,24 +1,98 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+<head>
 
-        {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
-        {% if frankenphp_hot_reload %}
-        <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
-        <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
-        <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
-        {% endif %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        {% block title %}Entre 2 Rives{% endblock %}
+    </title>
+
+    {# Google Fonts #}
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    {# Bootstrap CSS #}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/bootstrap.min.css') }}"
+    >
+
+    {# Custom CSS #}
+    {% block stylesheets %}
+
+        <link
+            rel="stylesheet"
+            href="{{ asset('css/app.css') }}"
+        >
+
+        <link
+            rel="stylesheet"
+            href="{{ asset('css/header.css') }}"
+        >
+
+        <link
+            rel="stylesheet"
+            href="{{ asset('css/footer.css') }}"
+        >
+
+    {% endblock %}
+
+    {# Favicon #}
+    <link
+        rel="icon"
+        type="image/png"
+        href="{{ asset('images/favicon-32x32.png') }}"
+    >
+
+</head>
+
+<body>
+
+    {% include 'partials/_header.html.twig' %}
+
+    {# Flash messages #}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div
+                class="alert alert-{{ type }} flash-message"
+                role="alert"
+            >
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
+
+    {% include 'partials/_footer.html.twig' %}
+
+    {% block javascripts %}
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+    {% endblock %}
+
+</body>
 </html>

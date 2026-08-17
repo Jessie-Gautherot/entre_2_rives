@@ -1,0 +1,215 @@
+/* HEADER */
+
+.site-header .navbar {
+    min-height: 130px;
+    padding: 0;
+    background-color: var(--color-primary);
+}
+
+.site-header .header-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    width: 100%;
+}
+
+/* LOGO */
+
+.header-logo {
+    grid-column: 1;
+    justify-self: start;
+    padding: 0 2rem;
+}
+
+.site-logo {
+    display: block;
+    width: 100px;
+    height: auto;
+}
+
+/* SITE NAME */
+
+.header-title {
+    grid-column: 2;
+    text-align: center;
+}
+
+.site-name {
+    color: var(--color-background);
+    font-family: "Playfair Display", serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+/* NAVIGATION */
+
+.site-header .navbar-collapse {
+    grid-column: 3;
+    justify-self: end;
+}
+
+.site-header .navbar-nav {
+    gap: 2rem;
+}
+
+.site-header .nav-link {
+    color: var(--color-background);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link:focus {
+    color: var(--color-accent);
+}
+
+/* ACCOUNT DROPDOWN */
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.header-account-btn {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+    font-weight: 500;
+    background-color: var(--color-accent);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.header-account-btn:hover,
+.header-account-btn:focus {
+    background-color: var(--color-background);
+    transform: translateY(-2px);
+}
+
+.site-header .dropdown-item {
+    padding: 0.65rem 1rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.site-header .nav-link.active {
+    color: var(--color-accent);
+}
+
+.site-header .dropdown-item:active {
+    color: var(--color-primary);
+    background-color: var(--color-background);
+}
+
+/* BURGER BUTTON */
+
+.site-header .navbar-toggler {
+    grid-column: 3;
+    justify-self: end;
+    border-color: var(--color-background);
+}
+
+.site-header .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.10rem var(--color-background);
+}
+
+.site-header .navbar-toggler-icon {
+    filter: invert(100%);
+}
+
+/* RESPONSIVE INTERMEDIATE DESKTOP */
+
+@media (min-width: 1400px) and (max-width: 1599.98px) {
+
+    .site-name {
+        font-size: 2rem;
+    }
+
+    .site-header .navbar-nav {
+        gap: 1rem;
+    }
+
+    .navbar-actions {
+        margin-left: 1rem;
+    }
+}
+
+/* RESPONSIVE SMALL DESKTOPS AND TABLETS */
+
+@media (max-width: 1399.98px) {
+
+    .site-name {
+        font-size: 2.2rem;
+    }
+    
+    .site-header .navbar-collapse {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: stretch;
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+
+    .site-header .navbar-nav {
+        align-items: center;
+        gap: 0;
+    }
+
+    .navbar-actions {
+        justify-content: center;
+        margin-top: 0.75rem;
+        margin-left: 0;
+    }
+
+    .site-header .dropdown-menu {
+        text-align: left;
+    }
+}
+
+/* RESPONSIVE PHONES */
+
+@media (max-width: 599.98px) {
+
+    .header-logo {
+        padding: 0 0.5rem;
+    }
+
+    .site-logo {
+        width: 80px;
+    }
+
+    .site-header .nav-link {
+        font-size: 1.2rem;
+    }
+
+    .btn-primary-custom {
+        padding: 0.55rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* RESPONSIVE SMALL PHONES */
+
+@media (max-width: 459.98px) {
+
+    .site-logo {
+        width: 60px;
+    }
+
+    .site-name {
+        font-size: 1.25rem;
+        letter-spacing: 0.01em;
+    }
+}
+
+/* RESPONSIVE VERY SMALL SCREENS */
+
+@media (max-width: 299.98px) {
+    .header-title {
+        display: none;
+    }
+}

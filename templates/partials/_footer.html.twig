@@ -1,0 +1,171 @@
+<footer class="site-footer">
+    <div class="container-fluid footer-container">
+
+        <div class="footer-brand">
+            <p class="footer-site-name">
+                Entre 2 Rives
+            </p>
+
+            <p class="footer-tagline">
+                Location de bateaux électriques sans permis
+            </p>
+        </div>
+
+        <nav
+            class="footer-navigation"
+            aria-label="Navigation secondaire"
+        >
+            <ul class="footer-navigation-list">
+
+                <li>
+                    <a href="{{ path('app_home') }}">
+                        Accueil
+                    </a>
+                </li>
+
+                <li>
+                    {#
+                    <a href="{{ path('app_faq') }}">
+                        FAQ
+                    </a>
+                    #}
+
+                    <span>
+                        FAQ
+                    </span>
+                </li>
+
+                <li>
+                    {#
+                    <a href="{{ path('app_contact') }}">
+                        Contact
+                    </a>
+                    #}
+
+                    <span>
+                        Contact
+                    </span>
+                </li>
+
+                <li>
+                    {#
+                    <a href="{{ path('app_safety_rules') }}">
+                        Règles de sécurité
+                    </a>
+                    #}
+
+                    <span>
+                        Règles de sécurité
+                    </span>
+                </li>
+
+            </ul>
+        </nav>
+
+        <section
+            class="footer-section"
+            aria-labelledby="footer-contact-title"
+        >
+            <h2
+                class="footer-title"
+                id="footer-contact-title"
+            >
+                Informations pratiques
+            </h2>
+
+            <address class="footer-address">
+
+                <p>
+                    <strong>Adresse :</strong><br>
+                    12 route du Canal<br>
+                    73310 Chanaz
+                </p>
+
+                <p>
+                    <strong>Horaires :</strong><br>
+                    Du mercredi au dimanche<br>
+                    9 h – 18 h
+                </p>
+
+                <p>
+                    <strong>Téléphone :</strong><br>
+
+                    <a href="tel:+33674714325">
+                        06&nbsp;74&nbsp;71&nbsp;43&nbsp;25
+                    </a>
+                </p>
+
+                <p>
+                    <strong>E-mail :</strong><br>
+
+                    <a href="mailto:contact@entre2rives.fr">
+                        contact@entre2rives.fr
+                    </a>
+                </p>
+
+            </address>
+        </section>
+
+        <section
+            class="footer-section"
+            aria-labelledby="footer-legal-title"
+        >
+            <h2
+                class="footer-title"
+                id="footer-legal-title"
+            >
+                Informations légales
+            </h2>
+
+            <ul class="footer-legal-list">
+
+                <li>
+                    {#
+                    <a href="{{ path('app_terms') }}">
+                        Conditions générales d'utilisation
+                    </a>
+                    #}
+
+                    <span>
+                        Conditions générales d'utilisation
+                    </span>
+                </li>
+
+                <li>
+                    {#
+                    <a href="{{ path('app_legal_notice') }}">
+                        Mentions légales
+                    </a>
+                    #}
+
+                    <span>
+                        Mentions légales
+                    </span>
+                </li>
+
+                <li>
+                    {#
+                    <a href="{{ path('app_privacy_policy') }}">
+                        Politique de confidentialité
+                    </a>
+                    #}
+
+                    <span>
+                        Politique de confidentialité
+                    </span>
+                </li>
+
+            </ul>
+        </section>
+
+        <div class="footer-bottom">
+            <p>
+                <small>
+                    © {{ "now"|date("Y") }}
+                    Entre 2 Rives — Tous droits réservés
+                </small>
+            </p>
+        </div>
+
+    </div>
+</footer>

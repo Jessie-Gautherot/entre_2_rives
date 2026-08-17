@@ -1,0 +1,74 @@
+/* ==========================================
+   COLOR VARIABLES
+========================================== */
+
+:root {
+    --color-primary: #334b5e;
+    --color-background: #ffffff;
+    --color-accent: #2EC4B6;
+}
+
+/* ==========================================
+   GENERAL STYLES
+========================================== */
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    font-family: "Inter", sans-serif;
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.btn-primary-custom {
+    padding: 0.7rem 1.4rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--color-accent);
+    transition:
+        background-color 0.2s,
+        transform 0.2s;
+}
+
+.btn-primary-custom:hover,
+.btn-primary-custom:focus {
+    color: var(--color-background);
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.btn-lg-custom {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.3rem;
+}
+
+/* FLASH MESSAGES */
+.flash-message {
+    --bs-alert-color: var(--color-primary);
+    --bs-alert-bg: var(--color-background);
+    max-width: 1200px;
+    margin: 1rem auto;
+    border-width: 2px;
+}
+
+.alert-success {
+    border-color: var(--color-accent);
+}
+
+.alert-danger {
+    border-color: #dc3545;
+}
+
+.alert-warning {
+    border-color: #f0ad4e;
+}
+
+.alert-info {
+    border-color: var(--color-primary);
+}
+

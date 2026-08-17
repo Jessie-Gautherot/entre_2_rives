@@ -1,0 +1,178 @@
+{% set currentRoute = app.request.attributes.get('_route') %}
+
+<header class="site-header">
+    <nav class="navbar navbar-expand-xxl">
+        <div class="container-fluid header-container">
+
+            <div class="header-logo">
+                <a
+                    class="site-logo-link"
+                    href="{{ path('app_home') }}"
+                >
+                    <img
+                        class="site-logo"
+                        src="{{ asset('images/logo.png') }}"
+                        alt="Entre 2 Rives - Accueil"
+                    >
+                </a>
+            </div>
+
+            <div class="header-title">
+                <span class="site-name">
+                    Entre 2 Rives
+                </span>
+            </div>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavigation"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+                aria-label="Afficher le menu de navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div
+                class="collapse navbar-collapse"
+                id="mainNavigation"
+            >
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ currentRoute == 'app_home' ? 'active' : '' }}"
+                            href="{{ path('app_home') }}"
+                            {% if currentRoute == 'app_home' %}
+                                aria-current="page"
+                            {% endif %}
+                        >
+                            Accueil
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ currentRoute == 'app_bateaux' ? 'active' : '' }}"
+                            href="{{ path('app_bateaux') }}"
+                            {% if currentRoute == 'app_bateaux' %}
+                                aria-current="page"
+                            {% endif %}
+                        >
+                            Bateaux
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ currentRoute == 'app_tarifs' ? 'active' : '' }}"
+                            href="{{ path('app_tarifs') }}"
+                            {% if currentRoute == 'app_tarifs' %}
+                                aria-current="page"
+                            {% endif %}
+                        >
+                            Tarifs
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="navbar-actions">
+                    <div class="dropdown">
+
+                        <button
+                            class="btn header-account-btn dropdown-toggle"
+                            type="button"
+                            id="accountDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            Compte
+                        </button>
+
+                        <ul
+                            class="dropdown-menu dropdown-menu-end"
+                            aria-labelledby="accountDropdown"
+                        >
+
+                            {% if app.user %}
+
+                                {% if is_granted('ROLE_ADMIN') %}
+
+                                    <li>
+                                        <a
+                                            class="dropdown-item"
+                                            href="#"
+                                        >
+                                            Administration
+                                        </a>
+                                    </li>
+
+                                {% else %}
+
+                                    <li>
+                                        <a
+                                            class="dropdown-item"
+                                            href="#"
+                                        >
+                                            Mon compte
+                                        </a>
+                                    </li>
+
+                                {% endif %}
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li>
+                                    <form
+                                        action="{{ path('app_logout') }}"
+                                        method="post"
+                                    >
+                                        <input
+                                            type="hidden"
+                                            name="_csrf_token"
+                                            value="{{ csrf_token('logout') }}"
+                                        >
+
+                                        <button
+                                            type="submit"
+                                            class="dropdown-item"
+                                        >
+                                            Se déconnecter
+                                        </button>
+                                    </form>
+                                </li>
+
+                            {% else %}
+
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ path('app_login') }}"
+                                    >
+                                        Se connecter
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="{{ path('app_register') }}"
+                                    >
+                                        Créer un compte
+                                    </a>
+                                </li>
+
+                            {% endif %}
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+</header>
