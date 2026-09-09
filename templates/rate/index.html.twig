@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarifs - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/rate.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid rate">
+        <div class="text-center">
+            <h1>Tarifs</h1>
+
+            <p class="rate-description">
+                Selon le modèle de bateau
+                et la durée de votre balade.
+            </p>
+        </div>
+
+        <div class="row g-5 rate-list">
+            {% for item in pricing %}
+                <div class="col-12 col-lg-4">
+                    <section
+                        class="card h-100 shadow-sm"
+                        aria-labelledby="rate-title-{{ item.boatModel.id }}"
+                    >
+                        <div class="card-body text-center">
+                            <h2
+                                id="rate-title-{{ item.boatModel.id }}"
+                                class="card-title"
+                            >
+                                {{ item.boatModel.name }}
+                            </h2>
+
+                            <p class="rate-capacity border-bottom">
+                                Jusqu’à {{ item.boatModel.capacity }} personnes
+                            </p>
+
+                            <div class="rate-groups">
+                                {% for group in item.rates %}
+                                    <div class="rate-row d-flex justify-content-evenly">
+                                        <span>
+                                            {{ group.duration }}
+                                            heure{{ group.duration > 1 ? 's' : '' }}
+                                        </span>
+
+                                        <div class="rate-prices">
+                                            {% for rate in group.rates %}
+                                                <p class="rate-price">
+                                                    {% if rate.label %}
+                                                        <span class="rate-label">
+                                                            {{ rate.label }} —
+                                                        </span>
+                                                    {% endif %}
+
+                                                    {{ (rate.price / 100)|number_format(0, ',', ' ') }} €
+                                                </p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <p>
+                                        Aucun tarif n'est disponible actuellement
+                                        pour ce bateau.
+                                    </p>
+                                {% endfor %}
+                            </div>
+
+                            <a
+                                class="btn btn-primary-custom"
+                                href="{{ path('app_boat_show', {slug: item.boatModel.slug}) }}"
+                                aria-label="Voir le bateau {{ item.boatModel.name }}"
+                            >
+                                Voir ce bateau
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            {% else %}
+                <p class="text-center">
+                    Aucun tarif n'est disponible actuellement.
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

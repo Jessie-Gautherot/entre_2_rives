@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos bateaux - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/boat-catalogue.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid boat-catalogue">
+        <div class="text-center">
+            <h1>Nos bateaux</h1>
+
+            <p class="boat-catalogue-description">
+                Choisissez le modèle adapté à votre balade.
+            </p>
+        </div>
+
+        <form id="boat-search-form" class="boat-search-form">
+            <fieldset>
+                <legend class="boat-search-title">
+                    Recherche par date et nombre de passagers
+                </legend>
+
+                <div class="d-flex flex-column flex-lg-row align-items-lg-center boat-search-fields">
+                    <div class="d-flex align-items-center boat-search-field">
+                        <label
+                            for="search-date"
+                            class="form-label mb-0"
+                        >
+                            Date de location
+                        </label>
+
+                        <input
+                            type="date"
+                            id="search-date"
+                            name="date"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+                    <div class="d-flex align-items-center boat-search-field">
+                        <label
+                            for="search-passenger-count"
+                            class="form-label mb-0"
+                        >
+                            Nombre de passagers
+                        </label>
+
+                        <input
+                            type="number"
+                            id="search-passenger-count"
+                            name="passengerCount"
+                            class="form-control"
+                            min="1"
+                            required
+                        >
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary-custom"
+                    >
+                        Rechercher
+                    </button>
+
+                    <button
+                        type="reset"
+                        class="btn btn-secondary-custom"
+                        id="boat-search-reset"
+                    >
+                        Effacer
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+
+        <div
+            id="boat-results"
+            class="row g-5"
+            aria-live="polite"
+        >
+            {% for boatModel in boatModels %}
+                <div class="col-12 col-lg-4">
+                    <article class="card h-100 shadow-sm">
+                        <img
+                            src="{{ asset(boatModel.mainImage) }}"
+                            alt="Bateau {{ boatModel.name }}"
+                            class="card-img-top boat-catalogue-image"
+                        >
+
+                        <div class="card-body text-center">
+                            <h2 class="card-title boat-catalogue-card-title">
+                                {{ boatModel.name }}
+                            </h2>
+
+                            <p class="boat-catalogue-capacity">
+                                Jusqu'à {{ boatModel.capacity }} personnes
+                            </p>
+
+                            <p class="card-text">
+                                {{ boatModel.description }}
+                            </p>
+
+                            <a
+                                class="btn btn-primary-custom"
+                                href="{{ path('app_boat_show', {slug: boatModel.slug}) }}"
+                                aria-label="Voir le bateau {{ boatModel.name }}"
+                            >
+                                Voir ce bateau
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            {% else %}
+                <p class="text-center">
+                    Aucun bateau n'est disponible actuellement.
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/boat-search.js') }}"></script>
+{% endblock %}
