@@ -1,0 +1,34 @@
+.boat-detail {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.boat-detail-back {
+    display: inline-block;
+    margin-bottom: 3rem;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.boat-detail-capacity {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.boat-detail-rates {
+    padding-bottom: 6rem;
+}
+
+.boat-detail-rates-title {
+    margin-bottom: 3rem;
+}
+
+.boat-detail-rates-list {
+    gap: 4rem;
+    margin-bottom: 4rem;
+}
+
+.boat-detail-rate-group {
+    flex: 1 1 250px;
+    max-width: 400px;
+}
