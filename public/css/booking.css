@@ -1,0 +1,25 @@
+.booking {
+    max-width: 1500px;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.booking-description {
+    margin-top: 2rem;
+    margin-bottom: 6rem;
+}
+
+.booking-fields {
+    margin-bottom: 6rem;
+}
+
+.booking-actions {
+    margin-top: 3rem;
+}
+
+.booking .form-label,
+.booking .form-control,
+.booking .form-select,
+.booking .form-select option {
+    color: var(--color-primary);
+}
