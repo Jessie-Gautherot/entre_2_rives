@@ -28,6 +28,13 @@ class Booking
         self::STATUS_CANCELLED,
     ];
 
+    public const STATUS_LABELS = [
+        self::STATUS_PENDING => 'En attente',
+        self::STATUS_CONFIRMED => 'Confirmée',
+        self::STATUS_CANCELLATION_PENDING => 'Annulation en cours',
+        self::STATUS_CANCELLED => 'Annulée',
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -242,6 +249,11 @@ class Booking
     public function getStatus(): string
     {
         return $this->status;
+    }
+
+    public function getStatusLabel(): string
+    {
+        return self::STATUS_LABELS[$this->status] ?? $this->status;
     }
 
     public function setStatus(string $status): static

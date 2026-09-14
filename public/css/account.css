@@ -1,0 +1,33 @@
+.account {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.account h1 {
+    margin-bottom: 6rem;
+}
+
+.account h2 {
+    margin-bottom: 3rem;
+}
+
+.account-info {
+    padding-bottom: 12rem;
+}
+
+.booking-item {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.booking-created {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.booking-date,
+.booking-price,
+.account-label  {
+    font-weight: 600;
+}

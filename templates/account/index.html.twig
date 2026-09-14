@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/account.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <div class="container account">
+        <h1 class="text-center">Mon compte</h1>
+
+        <section class="account-info">
+            <h2>Mes informations</h2>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <p class="account-label">Prénom</p>
+                    <p>{{ user.firstName }}</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p class="account-label">Nom</p>
+                    <p>{{ user.lastName }}</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p class="account-label">E-mail</p>
+                    <p>{{ user.email }}</p>
+                </div>
+
+                <div class="col-md-6">
+                    <p class="account-label">Téléphone</p>
+                    <p>{{ user.phone }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Mes réservations</h2>
+
+            {% if bookings is empty %}
+                <p>Vous n'avez encore aucune réservation.</p>
+            {% else %}
+                {% for booking in bookings %}
+                    <article class="booking-item">
+                        <div class="row g-4">
+                            <div class="col-lg-8">
+                                <p class="booking-created">
+                                    Réservation du
+                                    {{ booking.createdAt|date('d/m/Y') }}
+                                </p>
+
+                                <p>
+                                    <span>Pour une balade le :</span>
+                                    {{ booking.startAt|date('d/m/Y') }}
+                                </p>
+
+                                <p>
+                                    <span>Modèle du bateau :</span>
+                                    {{ booking.boatModel.name }}
+                                </p>
+
+                                <p>
+                                    <span>Formule :</span>
+                                    {{ booking.rentalRateLabel }}
+                                    —
+                                    {{ booking.startAt|date('H\\hi') }}
+                                    à
+                                    {{ booking.endAt|date('H\\hi') }}
+                                </p>
+
+                                <p>
+                                    <span>Nombre de passagers :</span>
+                                    {{ booking.passengerCount }}
+                                </p>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <p class="booking-price">
+                                    <span>Prix :</span>
+                                    {{ (booking.totalPrice / 100)|number_format(2, ',', ' ') }} €
+                                </p>
+
+                                <p>
+                                    <span>Statut de votre réservation :</span>
+                                    {{ booking.statusLabel }}
+                                </p>
+
+                                <p>
+                                    <span>Statut du paiement :</span>
+
+                                    {% if booking.payment %}
+                                        {{ booking.payment.paymentStatusLabel }}
+                                    {% else %}
+                                        Non renseigné
+                                    {% endif %}
+                                </p>
+
+                                {% if
+                                    booking.status == 'CONFIRMED'
+                                    and booking.startAt > date('+48 hours')
+                                %}
+                                    <form
+                                        method="post"
+                                        action="{{ path('app_booking_cancel', {id: booking.id}) }}"
+                                        onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');"
+                                    >
+                                        <input
+                                            type="hidden"
+                                            name="_token"
+                                            value="{{ csrf_token('cancel-booking-' ~ booking.id) }}"
+                                        >
+
+                                        <button
+                                            type="submit"
+                                            class="btn btn-secondary-custom"
+                                        >
+                                            Annuler la réservation
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}

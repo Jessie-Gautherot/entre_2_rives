@@ -32,7 +32,7 @@ class Payment
 
     public const STATUS_LABELS = [
         self::STATUS_PENDING => 'En attente',
-        self::STATUS_PAID => 'paiement reçu',
+        self::STATUS_PAID => 'Paiement reçu',
         self::STATUS_REFUND_PENDING => 'Remboursement en cours',
         self::STATUS_REFUNDED => 'Remboursement effectué',
         self::STATUS_REFUND_FAILED => 'Échec du remboursement',
