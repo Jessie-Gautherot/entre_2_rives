@@ -1,0 +1,351 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conditions générales de location - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/legal.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="legal-page">
+        <div class="container">
+            <h1 class="text-center">Conditions générales de location</h1>
+
+            <div class="legal-intro">
+                <p class="legal-page-notice fw-bold">
+                    Projet pédagogique fictif — aucune location réelle. <br>
+                    Entre 2 Rives est réalisé dans un cadre pédagogique.
+                    Les informations, coordonnées, réservations et paiements présentés
+                    sur ce site sont fictifs. Aucun paiement réel n'est effectué
+                    et aucun bateau ne peut être réellement réservé.
+                </p>
+
+                <p>
+                    Les présentes conditions générales définissent les règles applicables
+                    à la location de bateaux électriques sans permis proposée par
+                    <strong>Entre 2 Rives</strong>.
+                </p>
+
+                <p>
+                    Toute réservation implique la lecture et l'acceptation des présentes
+                    conditions ainsi que des consignes de sécurité applicables à la navigation.
+                </p>
+            </div>
+
+            <section class="legal-section">
+                <h2>1. Conditions de location</h2>
+
+                <p>
+                    La personne effectuant la réservation doit être majeure.
+                </p>
+
+                <p>
+                    Les bateaux proposés par Entre 2 Rives sont des bateaux électriques
+                    pouvant être conduits sans permis.
+                </p>
+
+                <p>
+                    Le client s'engage à respecter les consignes communiquées avant le départ
+                    ainsi que les règles de navigation et de sécurité pendant toute la durée
+                    de la location.
+                </p>
+
+                <p>
+                    Le nombre de personnes présentes à bord ne doit jamais dépasser
+                    la capacité maximale du bateau réservé.
+                </p>
+
+                <p>
+                    La navigation sous l'emprise de l'alcool, de stupéfiants ou de toute
+                    substance susceptible d'altérer la vigilance est interdite.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Réservation</h2>
+
+                <p>
+                    La réservation s'effectue en ligne depuis le site Entre 2 Rives.
+                </p>
+
+                <p>
+                    Pour réserver, le client doit disposer d'un compte actif et renseigner
+                    les informations demandées.
+                </p>
+
+                <p>
+                    Il choisit le bateau, la date, la formule de location proposée
+                    et le nombre de passagers.
+                </p>
+
+                <p>
+                    La réservation est définitive après validation du paiement.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. Tarifs et paiement</h2>
+
+                <p>
+                    Les tarifs applicables sont ceux affichés sur le site au moment
+                    de la réservation. Ils sont exprimés en euros.
+                </p>
+
+                <p>
+                    Le montant total à payer est indiqué au client avant la validation
+                    du paiement.
+                </p>
+
+                <p>
+                    Le paiement est effectué en ligne de manière sécurisée
+                    par l'intermédiaire de Stripe en mode test.
+                </p>
+
+                <p>
+                    Entre 2 Rives ne conserve pas les données bancaires utilisées
+                    pour le paiement.
+                </p>
+
+                <p class="legal-page-notice fw-bold">
+                    Le paiement présenté sur ce site est fictif.
+                    Aucun montant réel n'est prélevé et aucune réservation réelle
+                    de bateau n'est effectuée.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. Engagements du client</h2>
+
+                <p>En réservant un bateau, le client s'engage notamment à :</p>
+
+                <ul>
+                    <li>fournir des informations exactes lors de la réservation ;</li>
+                    <li>respecter le nombre maximal de passagers autorisé ;</li>
+                    <li>prendre connaissance des consignes de sécurité ;</li>
+                    <li>suivre les instructions communiquées avant le départ ;</li>
+                    <li>utiliser le bateau de manière prudente et conforme à sa destination ;</li>
+                    <li>respecter les règles et les zones de navigation communiquées ;</li>
+                    <li>ne pas naviguer sous l'emprise de l'alcool ou de stupéfiants ;</li>
+                    <li>respecter les horaires prévus ;</li>
+                    <li>restituer le bateau à l'heure convenue.</li>
+                </ul>
+
+                <p>
+                    Le client est également responsable du respect de ces consignes
+                    par les personnes qui l'accompagnent.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. Départ et retour</h2>
+
+                <p>
+                    Le client doit se présenter suffisamment tôt pour permettre
+                    les vérifications et la présentation des consignes nécessaires
+                    avant le départ.
+                </p>
+
+                <p>
+                    Le bateau doit être restitué à l'heure prévue afin de ne pas
+                    perturber les locations suivantes.
+                </p>
+
+                <p>
+                    En cas de retard prévisible, le client est invité à contacter
+                    Entre 2 Rives dans les meilleurs délais.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Annulation par le client</h2>
+
+                <p>
+                    Le client peut annuler sa réservation
+                    jusqu'à 48 heures avant l'heure de départ prévue.
+                </p>
+
+                <p>
+                    La demande d'annulation est effectuée depuis son espace personnel.
+                </p>
+
+                <p>
+                    Lorsque l'annulation est effectuée dans ce délai, le montant payé
+                    est intégralement remboursé sur le moyen de paiement utilisé
+                    lors de la réservation.
+                </p>
+
+                <p>
+                    L'annulation est définitive une fois confirmée.
+                </p>
+
+                <p>
+                    À moins de 48 heures du départ, l'annulation avec remboursement
+                    n'est plus disponible.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Annulation par Entre 2 Rives</h2>
+
+                <p>
+                    Entre 2 Rives peut être amené à annuler une location lorsque celle-ci
+                    ne peut pas être assurée dans des conditions normales ou suffisamment sûres.
+                </p>
+
+                <p>Cette annulation peut notamment intervenir :</p>
+
+                <ul>
+                    <li>en cas de conditions météorologiques rendant la navigation dangereuse ;</li>
+                    <li>en cas de panne du bateau prévu pour la location ;</li>
+                    <li>en cas d'accident ou de dommage rendant le bateau indisponible ;</li>
+                    <li>
+                        lorsqu'aucun autre bateau correspondant à la réservation
+                        ne peut être mis à disposition.
+                    </li>
+                </ul>
+
+                <p>
+                    Dans ce cas, Entre 2 Rives contacte le client dans les meilleurs délais.
+                </p>
+
+                <p>Le client peut alors choisir entre :</p>
+
+                <ul>
+                    <li>
+                        le report de sa réservation à une autre date,
+                        selon les disponibilités ;
+                    </li>
+                    <li>
+                        l'annulation de sa réservation avec
+                        remboursement intégral du montant payé.
+                    </li>
+                </ul>
+
+                <p>
+                    Aucun frais d'annulation n'est appliqué au client lorsque l'annulation
+                    est à l'initiative d'Entre 2 Rives.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>8. Sécurité</h2>
+
+                <p>
+                    Avant le départ, le client doit prendre connaissance des consignes
+                    de sécurité communiquées par Entre 2 Rives.
+                </p>
+
+                <p>
+                    Il s'engage à adopter un comportement prudent pendant toute la durée
+                    de la location et à utiliser correctement le bateau et les équipements
+                    mis à sa disposition.
+                </p>
+
+                <p>
+                    Le client doit notamment respecter la capacité maximale du bateau,
+                    les règles et zones de navigation communiquées ainsi que les consignes
+                    données avant le départ.
+                </p>
+
+                <p>
+                    Toute utilisation manifestement dangereuse ou contraire aux consignes
+                    peut entraîner l'interruption de la location.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>9. Droit de rétractation</h2>
+
+                <p>
+                    La location d'un bateau pour une date et un créneau déterminés constitue
+                    une prestation d'activité de loisirs fournie à une date ou selon
+                    une périodicité déterminée.
+                </p>
+
+                <p>
+                    Conformément à l'article L.221-28 du Code de la consommation,
+                    le droit de rétractation de quatorze jours applicable à certains
+                    contrats conclus à distance ne s'applique pas à ce type de prestation.
+                </p>
+
+                <p>
+                    Les conditions d'annulation prévues ci-dessus restent applicables.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>10. Données personnelles</h2>
+
+                <p>
+                    Les informations personnelles communiquées par le client sont utilisées
+                    pour la gestion de son compte, de ses réservations et des services
+                    proposés par Entre 2 Rives.
+                </p>
+
+                <p>
+                    Les modalités concernant l'utilisation des données personnelles
+                    sont détaillées dans la Politique de confidentialité disponible sur le site.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>11. Réclamations</h2>
+
+                <p>
+                    Pour toute question ou réclamation concernant une réservation,
+                    le client peut contacter Entre 2 Rives :
+                </p>
+
+                <address>
+                    <strong>Entre 2 Rives</strong><br>
+                    12 route du Canal<br>
+                    73310 Chanaz<br><br>
+                    Téléphone : 06 74 71 43 25<br>
+                    E-mail : contact@entre2rives.fr
+                </address>
+
+                <p class="legal-page-notice fw-bold">
+                    Les coordonnées et l'activité présentées sur ce site sont fictives
+                    et utilisées uniquement dans le cadre du projet pédagogique.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>12. Médiation de la consommation</h2>
+
+                <p>
+                    Dans le cadre d'une activité commerciale réelle, le consommateur peut
+                    avoir recours gratuitement à un médiateur de la consommation en cas
+                    de litige non résolu directement avec le professionnel.
+                </p>
+
+                <p>
+                    <strong>
+                        Entre 2 Rives étant un projet pédagogique fictif,
+                        aucun médiateur de la consommation réel n'est désigné.
+                    </strong>
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>13. Acceptation des conditions</h2>
+
+                <p>
+                    Avant de confirmer sa réservation, le client doit accepter
+                    les présentes conditions de location et les consignes de sécurité.
+                </p>
+
+                <p>
+                    La validation de la réservation vaut acceptation des conditions
+                    applicables au moment de celle-ci.
+                </p>
+            </section>
+
+            <p class="legal-page-notice fw-bold">
+                Entre 2 Rives est un projet fictif réalisé dans un cadre pédagogique.
+                Aucune location réelle de bateau et aucun paiement réel ne sont proposés.
+            </p>
+        </div>
+    </div>
+{% endblock %}

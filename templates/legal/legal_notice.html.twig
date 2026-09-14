@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/legal.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="legal-page">
+        <div class="container">
+            <h1 class="text-center">Mentions légales</h1>
+
+            <div class="legal-intro">
+                <p class="legal-page-notice fw-bold">
+                    Projet pédagogique fictif <br>
+                    Entre 2 Rives est un projet réalisé
+                    dans un cadre pédagogique.
+                    L'entreprise, l'activité commerciale et les coordonnées présentées
+                    sur ce site sont fictives.
+                </p>
+
+                <p>
+                    Les présentes mentions légales ont pour objet de présenter
+                    les informations relatives au site Entre 2 Rives.
+                </p>
+            </div>
+
+            <section class="legal-section">
+                <h2>1. Éditeur du site</h2>
+
+                <p>
+                    Le site Entre 2 Rives présente une activité fictive de location
+                    de bateaux électriques sans permis.
+                </p>
+
+                <address>
+                    <strong>Entre 2 Rives</strong><br>
+                    12 route du Canal<br>
+                    73310 Chanaz<br><br>
+                    Téléphone : 06 74 71 43 25<br>
+                    E-mail : contact@entre2rives.fr
+                </address>
+
+                <p>
+                    Entre 2 Rives ne constitue pas une entreprise réelle.
+                    Aucun numéro SIRET, numéro d'immatriculation ou capital social
+                    réel n'est donc associé à ce projet.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Responsable de la publication</h2>
+
+                <p>
+                    Le site a été conçu et développé dans le cadre d'un projet
+                    pédagogique.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. Hébergement</h2>
+
+                <p>
+                    Les informations relatives à l'hébergement du site seront précisées
+                    lors de sa mise en ligne.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. Propriété intellectuelle</h2>
+
+                <p>
+                    Les contenus créés spécifiquement pour le projet Entre 2 Rives,
+                    notamment les textes, éléments graphiques et éléments d'interface,
+                    sont présentés dans un cadre pédagogique.
+                </p>
+
+                <p>
+                    Les marques, logos, noms de produits ou services appartenant
+                    à des tiers restent la propriété de leurs titulaires respectifs.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. Responsabilité</h2>
+
+                <p>
+                    Entre 2 Rives est une application de démonstration réalisée
+                    dans un cadre pédagogique.
+                </p>
+
+                <p>
+                    Les informations relatives aux bateaux, tarifs, disponibilités,
+                    réservations et services présentés sur le site sont fictives
+                    et ne constituent pas une offre commerciale réelle.
+                </p>
+
+                <p>
+                    Aucun bateau ne peut être réellement réservé ou loué
+                    par l'intermédiaire de ce site.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Données personnelles</h2>
+
+                <p>
+                    Le site peut traiter les informations renseignées par les utilisateurs
+                    pour permettre le fonctionnement des fonctionnalités proposées,
+                    notamment la création d'un compte et la gestion des réservations fictives.
+                </p>
+
+                <p>
+                    Les informations relatives au traitement des données personnelles
+                    sont détaillées dans la Politique de confidentialité du site.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Paiement</h2>
+
+                <p>
+                    Les fonctionnalités de paiement sont utilisées uniquement
+                    à des fins de démonstration.
+                </p>
+
+                <p class="legal-page-notice fw-bold">
+                    Stripe est utilisé en mode test. <br>
+                    Aucun paiement réel n'est effectué
+                    et aucun montant réel n'est prélevé.
+                </p>
+            </section>
+
+            <p class="legal-page-notice fw-bold">
+                Entre 2 Rives est un projet fictif réalisé dans un cadre pédagogique. <br>
+                Il ne s'agit pas d'un service commercial réel de location de bateaux.
+            </p>
+        </div>
+    </div>
+{% endblock %}

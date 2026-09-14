@@ -1,0 +1,33 @@
+.legal-page {
+    padding-top: 6rem ;
+    padding-bottom: 6rem;
+}
+
+.legal-page h1 {
+    margin-bottom: 3rem;
+}
+
+.legal-intro {
+    margin-bottom: 3rem;
+}
+
+.legal-section {
+    margin-bottom: 3rem;
+}
+
+.legal-section p {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.legal-section ul {
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+.legal-section li {
+    margin-bottom: 0.5rem;
+}
+
+
+
