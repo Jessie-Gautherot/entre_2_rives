@@ -17,8 +17,8 @@ class BoatRepository extends ServiceEntityRepository
         parent::__construct($registry, Boat::class);
     }
 
-    /** 
-     * Used to find active boats belonging to a specific model for booking
+    /**
+     * Used to find active boats belonging to a specific model for booking.
      *
      * @return Boat[]
      */

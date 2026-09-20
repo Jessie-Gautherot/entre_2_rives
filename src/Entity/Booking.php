@@ -251,6 +251,11 @@ class Booking
         return $this->status;
     }
 
+    public function isConfirmed(): bool
+    {
+        return $this->status === self::STATUS_CONFIRMED;
+    }
+
     public function getStatusLabel(): string
     {
         return self::STATUS_LABELS[$this->status] ?? $this->status;

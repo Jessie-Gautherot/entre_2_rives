@@ -25,4 +25,20 @@ class UserRepository extends ServiceEntityRepository
             'activationToken' => $token,
         ]);
     }
+
+    /**
+     * Finds all client users for dashboard (and not admin account).
+     *
+     * @return User[]
+     */
+    public function findClients(): array
+    {
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.roles LIKE :role')
+            ->setParameter('role', '%"ROLE_CLIENT"%')
+            ->orderBy('user.lastName', 'ASC')
+            ->addOrderBy('user.firstName', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

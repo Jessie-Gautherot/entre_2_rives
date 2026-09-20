@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -21,7 +20,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * - Gets the user data
  * - Gets the user password
  * - Checks password confirmation
- * - Checks terms acceptance
  * - Applies form validation rules
  *
  * The plainPassword is hashed before saving.
@@ -67,15 +65,6 @@ class RegistrationFormType extends AbstractType
                     new Assert\Regex([
                         'pattern' => '/^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/',
                         'message' => 'Le mot de passe doit contenir au moins une majuscule, un chiffre et un caractère spécial.',
-                    ]),
-                ],
-            ])
-            ->add('acceptTerms', CheckboxType::class, [
-                'label' => false,
-                'mapped' => false,
-                'constraints' => [
-                    new Assert\IsTrue([
-                        'message' => 'Vous devez accepter les conditions générales d’utilisation.',
                     ]),
                 ],
             ]);
