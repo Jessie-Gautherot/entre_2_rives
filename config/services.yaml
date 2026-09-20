@@ -16,5 +16,14 @@ services:
         arguments:
             $appUrl: '%env(APP_URL)%'
             $mailerFrom: '%env(MAILER_FROM)%'
+            $contactEmail: '%env(CONTACT_EMAIL)%'
+
+    Stripe\StripeClient:
+        arguments:
+            - '%env(STRIPE_SECRET_KEY)%'
+
+    App\Service\StripeService:
+        arguments:
+            $appUrl: '%env(APP_URL)%'
 
   
