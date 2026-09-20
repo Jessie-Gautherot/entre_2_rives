@@ -1,9 +1,11 @@
 {% set currentRoute = app.request.attributes.get('_route') %}
 
 <header class="site-header">
-    <nav class="navbar navbar-expand-xxl">
+    <nav
+        class="navbar navbar-expand-xl"
+        aria-label="Navigation principale"
+    >
         <div class="container-fluid header-container">
-
             <div class="header-logo">
                 <a
                     class="site-logo-link"
@@ -32,7 +34,10 @@
                 aria-expanded="false"
                 aria-label="Afficher le menu de navigation"
             >
-                <span class="navbar-toggler-icon"></span>
+                <span
+                    class="navbar-toggler-icon"
+                    aria-hidden="true"
+                ></span>
             </button>
 
             <div
@@ -54,9 +59,9 @@
 
                     <li class="nav-item">
                         <a
-                            class="nav-link {{ currentRoute == 'app_bateaux' ? 'active' : '' }}"
-                            href="{{ path('app_bateaux') }}"
-                            {% if currentRoute == 'app_bateaux' %}
+                            class="nav-link {{ currentRoute starts with 'app_boat_' ? 'active' : '' }}"
+                            href="{{ path('app_boat_index') }}"
+                            {% if currentRoute starts with 'app_boat_' %}
                                 aria-current="page"
                             {% endif %}
                         >
@@ -66,9 +71,9 @@
 
                     <li class="nav-item">
                         <a
-                            class="nav-link {{ currentRoute == 'app_tarifs' ? 'active' : '' }}"
-                            href="{{ path('app_tarifs') }}"
-                            {% if currentRoute == 'app_tarifs' %}
+                            class="nav-link {{ currentRoute == 'app_rate_index' ? 'active' : '' }}"
+                            href="{{ path('app_rate_index') }}"
+                            {% if currentRoute == 'app_rate_index' %}
                                 aria-current="page"
                             {% endif %}
                         >
@@ -79,7 +84,6 @@
 
                 <div class="navbar-actions">
                     <div class="dropdown">
-
                         <button
                             class="btn header-account-btn dropdown-toggle"
                             type="button"
@@ -94,31 +98,25 @@
                             class="dropdown-menu dropdown-menu-end"
                             aria-labelledby="accountDropdown"
                         >
-
                             {% if app.user %}
-
                                 {% if is_granted('ROLE_ADMIN') %}
-
                                     <li>
                                         <a
                                             class="dropdown-item"
-                                            href="#"
+                                            href="{{ path('admin_dashboard') }}"
                                         >
                                             Administration
                                         </a>
                                     </li>
-
                                 {% else %}
-
                                     <li>
                                         <a
                                             class="dropdown-item"
-                                            href="#"
+                                            href="{{ path('app_account') }}"
                                         >
                                             Mon compte
                                         </a>
                                     </li>
-
                                 {% endif %}
 
                                 <li>
@@ -144,9 +142,7 @@
                                         </button>
                                     </form>
                                 </li>
-
                             {% else %}
-
                                 <li>
                                     <a
                                         class="dropdown-item"
@@ -164,15 +160,11 @@
                                         Créer un compte
                                     </a>
                                 </li>
-
                             {% endif %}
-
                         </ul>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </nav>
 </header>

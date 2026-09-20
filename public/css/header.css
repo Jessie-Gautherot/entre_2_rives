@@ -1,7 +1,7 @@
 /* HEADER */
 
 .site-header .navbar {
-    min-height: 130px;
+    min-height: 120px;
     padding: 0;
     background-color: var(--color-primary);
 }
@@ -37,7 +37,7 @@
 .site-name {
     color: var(--color-background);
     font-family: "Playfair Display", serif;
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     font-weight: 700;
     letter-spacing: 0.03em;
     white-space: nowrap;
@@ -56,7 +56,7 @@
 
 .site-header .nav-link {
     color: var(--color-background);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
@@ -74,9 +74,8 @@
 }
 
 .header-account-btn {
+    padding: 0.2rem 0.6rem;
     color: var(--color-primary);
-    font-size: 1.3rem;
-    font-weight: 500;
     background-color: var(--color-accent);
     transition:
         background-color 0.2s ease,
@@ -90,10 +89,8 @@
 }
 
 .site-header .dropdown-item {
-    padding: 0.65rem 1rem;
-    color: var(--color-primary);
-    font-weight: 500;
-    font-size: 1.2rem;
+    padding: 0.2rem 0.6rem;
+    color: var(--color-primary);   
 }
 
 .site-header .nav-link.active {
@@ -121,9 +118,16 @@
     filter: invert(100%);
 }
 
+.site-header .dropdown-menu {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    text-align: left;
+}
+
 /* RESPONSIVE INTERMEDIATE DESKTOP */
 
-@media (min-width: 1400px) and (max-width: 1599.98px) {
+@media (min-width: 1200px) and (max-width: 1599.98px) {
 
     .site-name {
         font-size: 2rem;
@@ -140,7 +144,7 @@
 
 /* RESPONSIVE SMALL DESKTOPS AND TABLETS */
 
-@media (max-width: 1399.98px) {
+@media (max-width: 1199.98px) {
 
     .site-name {
         font-size: 2.2rem;
@@ -185,11 +189,6 @@
     .site-header .nav-link {
         font-size: 1.2rem;
     }
-
-    .btn-primary-custom {
-        padding: 0.55rem 1rem;
-        font-size: 1rem;
-    }
 }
 
 /* RESPONSIVE SMALL PHONES */
@@ -203,13 +202,5 @@
     .site-name {
         font-size: 1.25rem;
         letter-spacing: 0.01em;
-    }
-}
-
-/* RESPONSIVE VERY SMALL SCREENS */
-
-@media (max-width: 299.98px) {
-    .header-title {
-        display: none;
     }
 }
