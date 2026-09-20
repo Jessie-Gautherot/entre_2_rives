@@ -103,7 +103,7 @@
                                 </p>
 
                                 {% if
-                                    booking.status == 'CONFIRMED'
+                                    booking.confirmed
                                     and booking.startAt >= date('+48 hours')
                                 %}
                                     <form

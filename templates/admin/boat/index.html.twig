@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bateaux - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_dashboard') }}"
+                class="admin-back-link"
+            >
+                ← Retour au tableau de bord
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Bateaux</h1>
+
+                <p>
+                    Gérez la disponibilité des bateaux physiques.
+                </p>
+            </header>
+
+            {% if boats is not empty %}
+                <div class="table-responsive">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Bateau</th>
+                                <th>Modèle</th>
+                                <th>Disponibilité</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for boat in boats %}
+                                <tr>
+                                    <td>
+                                        {{ boat.name }}
+                                    </td>
+
+                                    <td>
+                                        {{ boat.boatModel.name }}
+                                    </td>
+
+                                    <td>
+                                        {% if boat.active %}
+                                            Disponible
+                                        {% else %}
+                                            Indisponible
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        <form
+                                            method="post"
+                                            action="{{ path('admin_boat_toggle_availability', { id: boat.id }) }}"
+                                            onsubmit="return confirm('Êtes-vous sûr de vouloir modifier la disponibilité de ce bateau ?');"
+                                        >
+                                            <input
+                                                type="hidden"
+                                                name="_token"
+                                                value="{{ csrf_token('toggle_boat_availability_' ~ boat.id) }}"
+                                            >
+
+                                            <button
+                                                type="submit"
+                                                class="btn-admin"
+                                            >
+                                                {% if boat.active %}
+                                                    Rendre indisponible
+                                                {% else %}
+                                                    Rendre disponible
+                                                {% endif %}
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>
+                    Aucun bateau enregistré.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

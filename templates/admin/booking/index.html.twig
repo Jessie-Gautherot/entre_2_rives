@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservations - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_dashboard') }}"
+                class="admin-back-link"
+            >
+                ← Retour au tableau de bord
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Réservations</h1>
+
+                <p>
+                    Consultez l'ensemble des réservations.
+                </p>
+            </header>
+
+            {% if bookings is not empty %}
+                <div class="table-responsive">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Client</th>
+                                <th>Début</th>
+                                <th>Fin</th>
+                                <th>Modèle</th>
+                                <th>Formule</th>
+                                <th>Réservation</th>
+                                <th>Paiement</th>
+                                <th>Détails</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for booking in bookings %}
+                                <tr>
+                                    <td class="text-nowrap">
+                                        {{ booking.startAt|date('d/m/Y') }}
+                                    </td>
+
+                                    <td>
+                                        {{ booking.user.firstName }}
+                                        {{ booking.user.lastName }}
+                                    </td>
+
+                                    <td class="text-nowrap">
+                                        {{ booking.startAt|date('H \\h i') }}
+                                    </td>
+
+                                    <td class="text-nowrap">
+                                        {{ booking.endAt|date('H \\h i') }}
+                                    </td>
+
+                                    <td>
+                                        {{ booking.boatModel.name }}
+                                    </td>
+
+                                    <td>
+                                        {{ booking.rentalRateLabel }}
+                                    </td>
+
+                                    <td>
+                                        {{ booking.statusLabel }}
+                                    </td>
+
+                                    <td>
+                                        {% if booking.payment %}
+                                            {{ booking.payment.paymentStatusLabel }}
+                                        {% else %}
+                                            Aucun paiement
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        <a
+                                            href="{{ path('admin_booking_show', { id: booking.id }) }}"
+                                            class="btn-admin"
+                                        >
+                                            Voir
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>
+                    Aucune réservation enregistrée.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

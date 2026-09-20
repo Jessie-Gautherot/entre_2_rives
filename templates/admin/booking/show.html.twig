@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail de la réservation - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_booking_index') }}"
+                class="admin-back-link"
+            >
+                ← Retour aux réservations
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Détail de la réservation</h1>
+
+                <p>
+                    Réservation n°{{ booking.id }}
+                </p>
+            </header>
+
+            <section class="admin-detail admin-section">
+                <h2>Réservation</h2>
+
+                <div class="row g-5">
+                    <div class="col-12 col-md-6">
+                        <strong>Date</strong>
+                        <p>{{ booking.startAt|date('d/m/Y') }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Horaires</strong>
+                        <p>
+                            {{ booking.startAt|date('H \\h i') }}
+                            —
+                            {{ booking.endAt|date('H \\h i') }}
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Modèle</strong>
+                        <p>{{ booking.boatModel.name }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Bateau</strong>
+                        <p>{{ booking.boat.name }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Formule</strong>
+                        <p>{{ booking.rentalRateLabel }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Nombre de passagers</strong>
+                        <p>{{ booking.passengerCount }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Prix total</strong>
+                        <p>
+                            {{ (booking.totalPrice / 100)|number_format(2, ',', ' ') }} €
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Statut de la réservation</strong>
+                        <p>{{ booking.statusLabel }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Statut du paiement</strong>
+
+                        <p>
+                            {% if booking.payment %}
+                                {{ booking.payment.paymentStatusLabel }}
+                            {% else %}
+                                Aucun paiement
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-detail admin-section">
+                <h2>Client</h2>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6">
+                        <strong>Prénom</strong>
+                        <p>{{ booking.user.firstName }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Nom</strong>
+                        <p>{{ booking.user.lastName }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>E-mail</strong>
+                        <p>{{ booking.user.email }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Téléphone</strong>
+                        <p>{{ booking.user.phone }}</p>
+                    </div>
+                </div>
+            </section>
+
+            {% if booking.confirmed %}
+                <section class="admin-booking-actions text-center">
+                    <p>
+                        En cas d'annulation par Entre 2 Rives, pensez à prévenir le client.
+                    </p>
+
+                    <form
+                        method="post"
+                        action="{{ path('admin_booking_cancel', { id: booking.id }) }}"
+                        onsubmit="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');"
+                    >
+                        <input
+                            type="hidden"
+                            name="_token"
+                            value="{{ csrf_token('cancel_booking_' ~ booking.id) }}"
+                        >
+
+                        <button
+                            type="submit"
+                            class="btn-admin"
+                        >
+                            Annuler la réservation
+                        </button>
+                    </form>
+                </section>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

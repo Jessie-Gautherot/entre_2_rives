@@ -12,7 +12,7 @@
 
 {% block body %}
     <div class="container rate">
-        <div class="text-center">
+        <div class="rate-header">
             <h1>Tarifs</h1>
 
             <p class="rate-description">
@@ -21,14 +21,14 @@
             </p>
         </div>
 
-        <div class="row g-5 rate-list">
+        <div class="row g-5">
             {% for item in pricing %}
                 <div class="col-12 col-lg-4">
                     <section
-                        class="card h-100 shadow-sm"
+                        class="card rate-card"
                         aria-labelledby="rate-title-{{ item.boatModel.id }}"
                     >
-                        <div class="card-body text-center">
+                        <div class="card-body">
                             <h2
                                 id="rate-title-{{ item.boatModel.id }}"
                                 class="card-title"
@@ -36,32 +36,47 @@
                                 {{ item.boatModel.name }}
                             </h2>
 
-                            <p class="rate-capacity border-bottom">
+                            <p class="rate-capacity">
                                 Jusqu’à {{ item.boatModel.capacity }} personnes
                             </p>
 
                             <div class="rate-groups">
                                 {% for group in item.rates %}
-                                    <div class="rate-row d-flex justify-content-evenly">
-                                        <span>
-                                            {{ group.duration }}
-                                            heure{{ group.duration > 1 ? 's' : '' }}
-                                        </span>
+                                    {% if group.rates|length == 1 %}
+                                        <div class="rate-row">
+                                            <span class="rate-duration">
+                                                {{ group.duration }}
+                                                heure{{ group.duration > 1 ? 's' : '' }}
+                                            </span>
 
-                                        <div class="rate-prices">
+                                            <span class="rate-price">
+                                                {{ (group.rates[0].price / 100)|number_format(0, ',', ' ') }} €
+                                            </span>
+                                        </div>
+                                    {% else %}
+                                        <div class="rate-group">
+                                            <div class="rate-row">
+                                                <span class="rate-duration">
+                                                    {{ group.duration }}
+                                                    heure{{ group.duration > 1 ? 's' : '' }}
+                                                </span>
+
+                                                <span></span>
+                                            </div>
+
                                             {% for rate in group.rates %}
-                                                <p class="rate-price">
-                                                    {% if rate.label %}
-                                                        <span class="rate-label">
-                                                            {{ rate.label }} —
-                                                        </span>
-                                                    {% endif %}
+                                                <div class="rate-row">
+                                                    <span class="rate-label">
+                                                        {{ rate.label }}
+                                                    </span>
 
-                                                    {{ (rate.price / 100)|number_format(0, ',', ' ') }} €
-                                                </p>
+                                                    <span class="rate-price">
+                                                        {{ (rate.price / 100)|number_format(0, ',', ' ') }} €
+                                                    </span>
+                                                </div>
                                             {% endfor %}
                                         </div>
-                                    </div>
+                                    {% endif %}
                                 {% else %}
                                     <p>
                                         Aucun tarif n'est disponible actuellement
@@ -81,7 +96,7 @@
                     </section>
                 </div>
             {% else %}
-                <p class="text-center">
+                <p class="rate-empty">
                     Aucun tarif n'est disponible actuellement.
                 </p>
             {% endfor %}

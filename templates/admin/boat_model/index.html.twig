@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modèles - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_dashboard') }}"
+                class="admin-back-link"
+            >
+                ← Retour au tableau de bord
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Modèles</h1>
+
+                <p>
+                    Consultez et modifiez les modèles proposés à la location.
+                </p>
+            </header>
+
+            {% if boatModels is not empty %}
+                <div class="table-responsive">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Modèle</th>
+                                <th>Capacité</th>
+                                <th>Bateaux</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for boatModel in boatModels %}
+                                <tr>
+                                    <td>
+                                        {{ boatModel.name }}
+                                    </td>
+
+                                    <td>
+                                        {{ boatModel.capacity }} personnes
+                                    </td>
+
+                                    <td>
+                                        {{ boatModel.boats|length }}
+                                    </td>
+
+                                    <td>
+                                        <a
+                                            href="{{ path('admin_boat_model_edit', { id: boatModel.id }) }}"
+                                            class="btn-admin"
+                                        >
+                                            Modifier
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>
+                    Aucun modèle enregistré.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,22 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion | Entre 2 Rives{% endblock %}
+{% block title %}
+    Connexion | Entre 2 Rives
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/security.css') }}"
+    >
+{% endblock %}
 
 {% block body %}
-    <div class="container py-5">
+    <div class="container security">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-5">
-                <h1 class="mb-4">Connexion</h1>
+                <h1 class="security-title">
+                    Connexion
+                </h1>
 
                 {% if error %}
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger flash-message" role="alert">
                         {{ error.messageKey|trans(error.messageData, 'security') }}
                     </div>
                 {% endif %}
 
-                <form method="post">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">
+                <form
+                    method="post"
+                    class="security-form"
+                >
+                    <div class="security-field">
+                        <label
+                            for="email"
+                            class="form-label"
+                        >
                             Adresse e-mail
                         </label>
 
@@ -32,8 +50,11 @@
                         >
                     </div>
 
-                    <div class="mb-3">
-                        <label for="password" class="form-label">
+                    <div class="security-field">
+                        <label
+                            for="password"
+                            class="form-label"
+                        >
                             Mot de passe
                         </label>
 
@@ -47,7 +68,7 @@
                         >
                     </div>
 
-                    <div class="form-check mb-3">
+                    <div class="form-check security-options">
                         <input
                             type="checkbox"
                             id="remember_me"
@@ -55,7 +76,10 @@
                             class="form-check-input"
                         >
 
-                        <label for="remember_me" class="form-check-label">
+                        <label
+                            for="remember_me"
+                            class="form-check-label"
+                        >
                             Se souvenir de moi
                         </label>
                     </div>
@@ -66,12 +90,17 @@
                         value="{{ csrf_token('authenticate') }}"
                     >
 
-                    <button type="submit" <button type="submit" class="btn btn-primary-custom">
-                        Se connecter
-                    </button>
+                    <div class="security-actions">
+                        <button
+                            type="submit"
+                            class="btn btn-primary-custom"
+                        >
+                            Se connecter
+                        </button>
+                    </div>
                 </form>
 
-                <p class="mt-4">
+                <p class="security-link">
                     Vous n’avez pas encore de compte ?
                     <a href="{{ path('app_register') }}">
                         Créer un compte

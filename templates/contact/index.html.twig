@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Contact - Entre 2 Rives
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/contact.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <div class="container contact">
+        <h1 class="text-center">
+            Contact
+        </h1>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-5">
+                <p class="contact-intro">
+                    Une question sur nos bateaux, nos tarifs
+                    ou votre réservation ? Contactez-nous.
+                </p>
+
+                {{ form_start(contactForm, {
+                    attr: {
+                        class: 'contact-form'
+                    }
+                }) }}
+
+                <div class="contact-field">
+                    {{ form_label(contactForm.name, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(contactForm.name, {
+                        attr: {
+                            class: 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(contactForm.name) }}
+                </div>
+
+                <div class="contact-field">
+                    {{ form_label(contactForm.email, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(contactForm.email, {
+                        attr: {
+                            class: 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(contactForm.email) }}
+                </div>
+
+                <div class="contact-field">
+                    {{ form_label(contactForm.subject, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(contactForm.subject, {
+                        attr: {
+                            class: 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(contactForm.subject) }}
+                </div>
+
+                <div class="contact-field">
+                    {{ form_label(contactForm.message, null, {
+                        label_attr: {
+                            class: 'form-label'
+                        }
+                    }) }}
+
+                    {{ form_widget(contactForm.message, {
+                        attr: {
+                            class: 'form-control'
+                        }
+                    }) }}
+
+                    {{ form_errors(contactForm.message) }}
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary-custom"
+                >
+                    Envoyer le message
+                </button>
+
+                {{ form_end(contactForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

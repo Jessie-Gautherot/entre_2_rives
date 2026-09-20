@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <header class="admin-page-header text-center">
+                <h1>Tableau de bord</h1>
+
+                <p class="admin-dashboard-description">
+                    Bienvenue dans l'espace d'administration d'Entre 2 Rives.
+                </p>
+            </header>
+
+            <section
+                class="admin-section"
+                aria-label="Réservations du jour"
+            >
+                <h2>Réservations du jour</h2>
+
+                {% if bookings is not empty %}
+                    <div class="table-responsive">
+                        <table class="table admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Horaire</th>
+                                    <th>Modèle</th>
+                                    <th>Formule</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for booking in bookings %}
+                                    <tr>
+                                        <td>
+                                            {{ booking.user.firstName }}
+                                            {{ booking.user.lastName }}
+                                        </td>
+                                        <td>{{ booking.startAt|date('H \\h i') }}</td>
+                                        <td>{{ booking.boatModel.name }}</td>
+                                        <td>{{ booking.rentalRateLabel }}</td>
+                                        <td>{{ booking.statusLabel }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="admin-bookings-empty">
+                        Aucune réservation prévue aujourd'hui.
+                    </p>
+                {% endif %}
+            </section>
+
+            <section
+                class="admin-dashboard-management"
+                aria-label="Gestion"
+            >
+                <h2>Gestion</h2>
+
+                <div class="row g-5">
+                    <div class="col-12 col-lg-6">
+                        <div class="admin-management-item d-flex flex-column">
+                            <div class="admin-management-content">
+                                <h3>Réservations</h3>
+                                <p>Consulter et gérer les réservations.</p>
+                            </div>
+
+                            <a
+                                href="{{ path('admin_booking_index') }}"
+                                class="btn btn-primary-custom"
+                            >
+                                Accéder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="admin-management-item d-flex flex-column">
+                            <div class="admin-management-content">
+                                <h3>Bateaux</h3>
+                                <p>Gérer la disponibilité des bateaux physiques.</p>
+                            </div>
+
+                            <a
+                                href="{{ path('admin_boat_index') }}"
+                                class="btn btn-primary-custom"
+                            >
+                                Accéder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="admin-management-item d-flex flex-column">
+                            <div class="admin-management-content">
+                                <h3>Modèles</h3>
+                                <p>Gérer les modèles proposés à la location.</p>
+                            </div>
+
+                            <a
+                                href="{{ path('admin_boat_model_index') }}"
+                                class="btn btn-primary-custom"
+                            >
+                                Accéder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="admin-management-item d-flex flex-column">
+                            <div class="admin-management-content">
+                                <h3>Tarifs de location</h3>
+                                <p>Gérer les formules et leurs tarifs.</p>
+                            </div>
+
+                            <a
+                                href="{{ path('admin_rental_rate_index') }}"
+                                class="btn btn-primary-custom"
+                            >
+                                Accéder
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="admin-management-item d-flex flex-column">
+                            <div class="admin-management-content">
+                                <h3>Clients</h3>
+                                <p>Consulter les informations des clients.</p>
+                            </div>
+
+                            <a
+                                href="{{ path('admin_client_index') }}"
+                                class="btn btn-primary-custom"
+                            >
+                                Accéder
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

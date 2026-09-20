@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid boat-catalogue">
+    <div class="container boat-catalogue">
         <div class="text-center">
             <h1>Nos bateaux</h1>
 
@@ -21,16 +21,16 @@
         </div>
 
         <form id="boat-search-form" class="boat-search-form">
-            <fieldset>
+            <fieldset class="boat-search-form-content">
                 <legend class="boat-search-title">
                     Recherche par date et nombre de passagers
                 </legend>
 
-                <div class="d-flex flex-column flex-lg-row align-items-lg-center boat-search-fields">
-                    <div class="d-flex align-items-center boat-search-field">
+                <div class="row g-4 align-items-end">
+                    <div class="col-12 col-md-6 col-lg">
                         <label
                             for="search-date"
-                            class="form-label mb-0"
+                            class="form-label"
                         >
                             Date de location
                         </label>
@@ -44,10 +44,10 @@
                         >
                     </div>
 
-                    <div class="d-flex align-items-center boat-search-field">
+                    <div class="col-12 col-md-6 col-lg">
                         <label
                             for="search-passenger-count"
-                            class="form-label mb-0"
+                            class="form-label"
                         >
                             Nombre de passagers
                         </label>
@@ -62,20 +62,24 @@
                         >
                     </div>
 
-                    <button
-                        type="submit"
-                        class="btn btn-primary-custom"
-                    >
-                        Rechercher
-                    </button>
+                    <div class="col-12 col-lg-auto">
+                        <button
+                            type="submit"
+                            class="btn btn-primary-custom"
+                        >
+                            Rechercher
+                        </button>
+                    </div>
 
-                    <button
-                        type="reset"
-                        class="btn btn-secondary-custom"
-                        id="boat-search-reset"
-                    >
-                        Effacer
-                    </button>
+                    <div class="col-12 col-lg-auto">
+                        <button
+                            type="reset"
+                            class="btn btn-secondary-custom btn-lg-custom"
+                            id="boat-search-reset"
+                        >
+                            Effacer
+                        </button>
+                    </div>
                 </div>
             </fieldset>
         </form>
@@ -94,7 +98,7 @@
                             class="card-img-top boat-catalogue-image"
                         >
 
-                        <div class="card-body text-center">
+                        <div class="card-body text-center d-flex flex-column">
                             <h2 class="card-title boat-catalogue-card-title">
                                 {{ boatModel.name }}
                             </h2>
@@ -108,7 +112,7 @@
                             </p>
 
                             <a
-                                class="btn btn-primary-custom"
+                                class="btn btn-primary-custom boat-catalogue-card-button align-self-center"
                                 href="{{ path('app_boat_show', {slug: boatModel.slug}) }}"
                                 aria-label="Voir le bateau {{ boatModel.name }}"
                             >
@@ -130,3 +134,4 @@
     {{ parent() }}
     <script src="{{ asset('js/boat-search.js') }}"></script>
 {% endblock %}
+

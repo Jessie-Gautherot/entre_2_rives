@@ -1,17 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer un compte | Entre 2 Rives{% endblock %}
+{% block title %}
+    Créer un compte | Entre 2 Rives
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/security.css') }}"
+    >
+{% endblock %}
 
 {% block body %}
-    <div class="container py-5">
+    <div class="container security">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6">
-                <h1 class="mb-4">Créer un compte</h1>
+            <div class="col-12 col-md-8 col-lg-5">
+                <h1 class="security-title">
+                    Créer un compte
+                </h1>
 
-                {{ form_start(registrationForm) }}
+                {{ form_start(registrationForm, {
+                    attr: {
+                        class: 'security-form'
+                    }
+                }) }}
+
                 {{ form_errors(registrationForm) }}
 
-                <div class="mb-3">
+                <div class="security-field">
                     {{ form_label(registrationForm.firstName, null, {
                         label_attr: {
                             class: 'form-label'
@@ -28,7 +45,7 @@
                     {{ form_errors(registrationForm.firstName) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="security-field">
                     {{ form_label(registrationForm.lastName, null, {
                         label_attr: {
                             class: 'form-label'
@@ -45,7 +62,7 @@
                     {{ form_errors(registrationForm.lastName) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="security-field">
                     {{ form_label(registrationForm.phone, null, {
                         label_attr: {
                             class: 'form-label'
@@ -62,7 +79,7 @@
                     {{ form_errors(registrationForm.phone) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="security-field">
                     {{ form_label(registrationForm.email, null, {
                         label_attr: {
                             class: 'form-label'
@@ -79,7 +96,7 @@
                     {{ form_errors(registrationForm.email) }}
                 </div>
 
-                <div class="mb-3">
+                <div class="security-field">
                     {{ form_label(registrationForm.plainPassword.first, null, {
                         label_attr: {
                             class: 'form-label'
@@ -96,13 +113,16 @@
 
                     {{ form_errors(registrationForm.plainPassword.first) }}
 
-                    <p id="password-help" class="form-text">
+                    <p
+                        id="password-help"
+                        class="form-text"
+                    >
                         Le mot de passe doit contenir au moins 8 caractères,
                         une majuscule, un chiffre et un caractère spécial.
                     </p>
                 </div>
 
-                <div class="mb-3">
+                <div class="security-field">
                     {{ form_label(registrationForm.plainPassword.second, null, {
                         label_attr: {
                             class: 'form-label'
@@ -119,32 +139,18 @@
                     {{ form_errors(registrationForm.plainPassword.second) }}
                 </div>
 
-                <div class="mb-3">
-                    <div class="form-check">
-                        {{ form_widget(registrationForm.acceptTerms, {
-                            attr: {
-                                class: 'form-check-input'
-                            }
-                        }) }}
-
-                        <label
-                            class="form-check-label"
-                            for="{{ registrationForm.acceptTerms.vars.id }}"
-                        >
-                            J'accepte les conditions générales d'utilisation
-                        </label>
-                    </div>
-
-                    {{ form_errors(registrationForm.acceptTerms) }}
+                <div class="security-actions">
+                    <button
+                        type="submit"
+                        class="btn btn-primary-custom"
+                    >
+                        Créer mon compte
+                    </button>
                 </div>
-
-                <button type="submit" class="btn btn-primary-custom">
-                    Créer mon compte
-                </button>
 
                 {{ form_end(registrationForm) }}
 
-                <p class="mt-4">
+                <p class="security-link">
                     Vous avez déjà un compte ?
                     <a href="{{ path('app_login') }}">
                         Se connecter

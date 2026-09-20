@@ -23,6 +23,31 @@
 
         <div class="row g-5">
             <div class="col-12 col-lg-7">
+                {% set images = [
+                    {
+                        path: boatModel.mainImage,
+                        alt: 'Bateau ' ~ boatModel.name ~ ' - Photo principale vue de côté'
+                    }
+                ] %}
+
+                {% if boatModel.secondImage %}
+                    {% set images = images|merge([
+                        {
+                            path: boatModel.secondImage,
+                            alt: 'Bateau ' ~ boatModel.name ~ ' - Photo vue de l\'autre côté'
+                        }
+                    ]) %}
+                {% endif %}
+
+                {% if boatModel.thirdImage %}
+                    {% set images = images|merge([
+                        {
+                            path: boatModel.thirdImage,
+                            alt: 'Bateau ' ~ boatModel.name ~ ' - Photo vue de l\'arrière'
+                        }
+                    ]) %}
+                {% endif %}
+
                 <div
                     id="boatCarousel"
                     class="carousel slide"
@@ -30,54 +55,29 @@
                     aria-label="Photos du bateau {{ boatModel.name }}"
                 >
                     <div class="carousel-indicators">
-                        <button
-                            type="button"
-                            data-bs-target="#boatCarousel"
-                            data-bs-slide-to="0"
-                            class="active"
-                            aria-current="true"
-                            aria-label="Afficher la première photo"
-                        ></button>
-
-                        <button
-                            type="button"
-                            data-bs-target="#boatCarousel"
-                            data-bs-slide-to="1"
-                            aria-label="Afficher la deuxième photo"
-                        ></button>
-
-                        <button
-                            type="button"
-                            data-bs-target="#boatCarousel"
-                            data-bs-slide-to="2"
-                            aria-label="Afficher la troisième photo"
-                        ></button>
+                        {% for image in images %}
+                            <button
+                                type="button"
+                                data-bs-target="#boatCarousel"
+                                data-bs-slide-to="{{ loop.index0 }}"
+                                {% if loop.first %}
+                                    class="active"
+                                    aria-current="true"
+                                {% endif %}
+                                aria-label="Afficher la photo {{ loop.index }}"
+                            ></button>
+                        {% endfor %}
                     </div>
 
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img
-                                src="{{ asset(boatModel.mainImage) }}"
-                                class="w-100"
-                                alt="Bateau {{ boatModel.name }} - Photo principale vue de côté"
-                            >
-                        </div>
-
-                        <div class="carousel-item">
-                            <img
-                                src="{{ asset(boatModel.secondImage) }}"
-                                class="w-100"
-                                alt="Bateau {{ boatModel.name }} - Photo vue de l'autre côté"
-                            >
-                        </div>
-
-                        <div class="carousel-item">
-                            <img
-                                src="{{ asset(boatModel.thirdImage) }}"
-                                class="w-100"
-                                alt="Bateau {{ boatModel.name }} - Photo vue de l'arrière"
-                            >
-                        </div>
+                        {% for image in images %}
+                            <div class="carousel-item{% if loop.first %} active{% endif %}">
+                                <img
+                                    src="{{ asset(image.path) }}"
+                                    alt="{{ image.alt }}"
+                                >
+                            </div>
+                        {% endfor %}
                     </div>
 
                     <button
@@ -125,38 +125,40 @@
     </div>
 
     <section class="boat-detail-rates">
-        <h2 class="boat-detail-rates-title text-center">
-            Tarifs
-        </h2>
+        <div class="container">
+            <h2 class="boat-detail-rates-title text-center">
+                Tarifs
+            </h2>
 
-        <div class="boat-detail-rates-list d-flex flex-wrap justify-content-center">
-            {% for group in groupedRates %}
-                <div class="boat-detail-rate-group text-center">
-                    <p>
-                        {{ group.duration }}
-                        heure{{ group.duration > 1 ? 's' : '' }}
-                    </p>
-
-                    {% for rate in group.rates %}
+            <div class="boat-detail-rates-list row g-5">
+                {% for group in groupedRates %}
+                    <div class="col-12 col-md-4 boat-detail-rate-group text-center">
                         <p>
-                            {% if rate.label %}
-                                {{ rate.label }} —
-                            {% endif %}
-
-                            {{ (rate.price / 100)|number_format(0, ',', ' ') }} €
+                            {{ group.duration }}
+                            heure{{ group.duration > 1 ? 's' : '' }}
                         </p>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-        </div>
 
-        <div class="boat-detail-booking text-center">
-            <a
-                href="{{ path('app_booking_new', { model: boatModel.slug }) }}"
-                class="btn btn-primary-custom btn-lg-custom"
-            >
-                Réserver maintenant
-            </a>
+                        {% for rate in group.rates %}
+                            <p>
+                                {% if rate.label %}
+                                    {{ rate.label }} —
+                                {% endif %}
+
+                                {{ (rate.price / 100)|number_format(0, ',', ' ') }} €
+                            </p>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="boat-detail-booking text-center">
+                <a
+                    href="{{ path('app_booking_new', { model: boatModel.slug }) }}"
+                    class="btn btn-primary-custom btn-lg-custom"
+                >
+                    Réserver maintenant
+                </a>
+            </div>
         </div>
     </section>
 {% endblock %}
