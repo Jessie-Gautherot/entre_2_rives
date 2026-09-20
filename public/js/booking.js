@@ -8,11 +8,13 @@ async function loadAvailableRentalRates() {
     const modelId = modelSelect.value;
 
     // Resets the rental rate select.
-    rentalRateSelect.innerHTML = `
-        <option value="">
-            Choisir une formule
-        </option>
-    `;
+    rentalRateSelect.replaceChildren();
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Choisir une formule';
+
+    rentalRateSelect.appendChild(defaultOption);
 
     availabilityStatus.textContent = '';
 
@@ -51,6 +53,7 @@ async function loadAvailableRentalRates() {
 
             option.textContent =
                 `${rentalRate.label} — ` +
+                `${rentalRate.durationHours} h — ` +
                 `${rentalRate.startTime} à ${rentalRate.endTime} — ` +
                 `${(rentalRate.price / 100).toFixed(2)} €`;
 

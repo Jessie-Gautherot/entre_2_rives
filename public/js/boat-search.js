@@ -1,8 +1,10 @@
 const searchForm = document.getElementById('boat-search-form');
 const boatResults = document.getElementById('boat-results');
 const resetButton = document.getElementById('boat-search-reset');
+
 // Saves the initial catalogue to restore it after reset.
 const initialBoatResults = boatResults.innerHTML;
+
 // Updates the catalogue with the search results.
 searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -16,72 +18,84 @@ searchForm.addEventListener('submit', async (event) => {
         );
 
         if (!response.ok) {
-            boatResults.innerHTML = `
-                <p class="text-center">
-                    Impossible de charger les bateaux disponibles.
-                </p>
-            `;
-
+            displayMessage('Impossible de charger les bateaux disponibles.');
             return;
         }
 
         const boatModels = await response.json();
 
-        boatResults.innerHTML = '';
+        boatResults.replaceChildren();
 
         if (boatModels.length === 0) {
-            boatResults.innerHTML = `
-                <p class="text-center">
-                    Aucun bateau n'est disponible pour cette recherche.
-                </p>
-            `;
-
+            displayMessage("Aucun bateau n'est disponible pour cette recherche.");
             return;
         }
 
         boatModels.forEach((boatModel) => {
-            boatResults.innerHTML += `
-                <div class="col-12 col-lg-4">
-                    <article class="card h-100 shadow-sm">
-                        <img
-                            src="/${boatModel.mainImage}"
-                            alt="Bateau ${boatModel.name}"
-                            class="card-img-top boat-catalogue-image"
-                        >
+            const column = document.createElement('div');
+            column.classList.add('col-12', 'col-lg-4');
 
-                        <div class="card-body text-center">
-                            <h2 class="card-title boat-catalogue-card-title">
-                                ${boatModel.name}
-                            </h2>
+            const article = document.createElement('article');
+            article.classList.add('card', 'h-100', 'shadow-sm');
 
-                            <p class="boat-catalogue-capacity">
-                                Jusqu'à ${boatModel.capacity} personnes
-                            </p>
+            const image = document.createElement('img');
+            image.src = `/${boatModel.mainImage}`;
+            image.alt = `Bateau ${boatModel.name}`;
+            image.classList.add('card-img-top', 'boat-catalogue-image');
 
-                            <p class="card-text">
-                                ${boatModel.description}
-                            </p>
+            const cardBody = document.createElement('div');
+            cardBody.classList.add('card-body', 'text-center');
 
-                            <a
-                                class="btn btn-primary-custom"
-                                href="/bateaux/${boatModel.slug}"
-                                aria-label="Voir le bateau ${boatModel.name}"
-                            >
-                                Voir ce bateau
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            `;
+            const title = document.createElement('h2');
+            title.classList.add('card-title', 'boat-catalogue-card-title');
+            title.textContent = boatModel.name;
+
+            const capacity = document.createElement('p');
+            capacity.classList.add('boat-catalogue-capacity');
+            capacity.textContent = `Jusqu'à ${boatModel.capacity} personnes`;
+
+            const description = document.createElement('p');
+            description.classList.add('card-text');
+            description.textContent = boatModel.description;
+
+            const link = document.createElement('a');
+            link.classList.add('btn', 'btn-primary-custom');
+            link.href = `/bateaux/${boatModel.slug}`;
+            link.textContent = 'Voir ce bateau';
+            link.setAttribute(
+                'aria-label',
+                `Voir le bateau ${boatModel.name}`
+            );
+
+            cardBody.appendChild(title);
+            cardBody.appendChild(capacity);
+            cardBody.appendChild(description);
+            cardBody.appendChild(link);
+
+            article.appendChild(image);
+            article.appendChild(cardBody);
+
+            column.appendChild(article);
+
+            boatResults.appendChild(column);
         });
     } catch (error) {
-        boatResults.innerHTML = `
-            <p class="text-center">
-                Une erreur est survenue lors du chargement des bateaux.
-            </p>
-        `;
+        displayMessage(
+            'Une erreur est survenue lors du chargement des bateaux.'
+        );
     }
 });
+
+// Displays a message in the catalogue area.
+function displayMessage(message) {
+    boatResults.replaceChildren();
+
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('text-center');
+    paragraph.textContent = message;
+
+    boatResults.appendChild(paragraph);
+}
 
 resetButton.addEventListener('click', () => {
     boatResults.innerHTML = initialBoatResults;
