@@ -1,0 +1,40 @@
+.security {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+.security-title {
+    margin-bottom: 3rem;
+}
+
+.security-form {
+    padding: 2rem;
+    border: 1px solid rgba(51, 75, 94, 0.2);
+    border-radius: 0.5rem;
+}
+
+.security-field {
+    margin-bottom: 1rem;
+}
+
+.security-options {
+    margin-bottom: 2rem;
+}
+
+.security-link {
+    margin-top: 2rem;
+}
+
+.security .form-label {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.security .form-control {
+    color: var(--color-primary);
+}
+
+.security .btn-primary-custom {
+    margin-bottom: 0;
+}

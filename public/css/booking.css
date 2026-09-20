@@ -1,25 +1,42 @@
 .booking {
-    max-width: 1500px;
-    padding-top: 6rem;
+    padding-top: 3rem;
     padding-bottom: 6rem;
 }
 
 .booking-description {
-    margin-top: 2rem;
-    margin-bottom: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.booking-form-content {
+    padding: 2rem;
+    border: 1px solid rgba(51, 75, 94, 0.2);
+    border-radius: 0.5rem;
 }
 
 .booking-fields {
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
 }
 
 .booking-actions {
-    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
 }
 
-.booking .form-label,
+.booking .form-label {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
 .booking .form-control,
 .booking .form-select,
 .booking .form-select option {
     color: var(--color-primary);
+}
+
+.booking .btn-primary-custom {
+    margin-bottom: 0;
 }

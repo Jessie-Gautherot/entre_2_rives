@@ -1,6 +1,4 @@
-/* ==========================================
-   COLOR VARIABLES
-========================================== */
+/* COLOR VARIABLES */
 
 :root {
     --color-primary: #334b5e;
@@ -8,9 +6,7 @@
     --color-accent: #2EC4B6;
 }
 
-/* ==========================================
-   GENERAL STYLES
-========================================== */
+/* GENERAL STYLES */
 
 body {
     min-height: 100vh;
@@ -18,21 +14,36 @@ body {
     color: var(--color-primary);
     background-color: var(--color-background);
     font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
-/* ==========================================
-   BUTTONS
-========================================== */
+/* TITLE */
+h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
 
+h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* BUTTONS */
 .btn-primary-custom {
-    padding: 0.7rem 1.4rem;
+    padding: 0.4rem 0.6rem;
     color: var(--color-primary);
-    font-size: 1rem;
     font-weight: 500;
     background-color: var(--color-accent);
     transition:
         background-color 0.2s,
         transform 0.2s;
+    margin-bottom: 2rem;
 }
 
 .btn-primary-custom:hover,
@@ -43,8 +54,43 @@ body {
 }
 
 .btn-lg-custom {
-    padding: 0.9rem 1.8rem;
-    font-size: 1.3rem;
+    padding: 0.6rem 0.8rem;
+    font-size: 1.1rem;
+}
+
+.btn-secondary-custom {
+    padding: 0.5rem 1rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--color-background);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-admin {
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    border: 1px solid var(--color-primary);
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+
+.btn-admin:hover,
+.btn-admin:focus {
+    color: var(--color-background);
+    background-color: var(--color-primary);
+}
+
+/* FORMS */
+
+.form-control:not(textarea),
+.form-select {
+    height: 2rem;
 }
 
 /* FLASH MESSAGES */

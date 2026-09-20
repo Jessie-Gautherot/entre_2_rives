@@ -1,45 +1,35 @@
 .boat-catalogue {
-    max-width: 1500px;
-    padding-top: 6rem;
+    padding-top: 3rem;
     padding-bottom: 6rem;
 }
 
 .boat-catalogue-description {
-    margin-top: 2rem;
-    margin-bottom: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
 }
 
 .boat-search-form {
-    width: 100%;
     margin-bottom: 3rem;
 }
 
 .boat-search-title {
-    margin-bottom: 2rem;
-    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    font-size: 1rem;
 }
 
-.boat-search-fields {
-    width: 100%;
-    column-gap: 3rem;
-    row-gap: 2rem;
+.boat-search-form .form-label {
+    color: var(--color-primary);
+    font-weight: 500;
 }
 
-.boat-search-field {
-    flex: 1 1 0;
-    gap: 1rem;
+
+.boat-search-form .form-control {
+    height: 2rem;
+    color: var(--color-primary);
 }
 
-.boat-search-field .form-label {
-    white-space: nowrap;
-}
-
-.boat-search-field .form-control {
-    flex: 1 1 auto;
-    min-width: 0;
-}
-
-.boat-search-fields .btn-primary-custom {
+.boat-search-form .btn-primary-custom {
     margin-bottom: 0;
 }
 
@@ -58,15 +48,19 @@
 
 .boat-catalogue-card-title {
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 1.4rem;
 }
 
 .boat-catalogue-capacity {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 .boat-catalogue .card-text {
     margin-bottom: 2rem;
+}
+
+.boat-catalogue-card-button {
+    margin-top: auto;
 }
 
 

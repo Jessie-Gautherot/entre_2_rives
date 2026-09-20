@@ -1,6 +1,6 @@
 .boat-detail {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .boat-detail-back {
@@ -24,11 +24,11 @@
 }
 
 .boat-detail-rates-list {
-    gap: 4rem;
+    margin-right: 0;
     margin-bottom: 4rem;
+    margin-left: 0;
 }
 
-.boat-detail-rate-group {
-    flex: 1 1 250px;
-    max-width: 400px;
+.boat-detail .carousel-item img {
+    width: 100%;
 }
