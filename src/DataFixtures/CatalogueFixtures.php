@@ -98,7 +98,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $escapade,
-            'Matin',
+            'Petit Matin',
             2,
             '09:00',
             5000
@@ -116,7 +116,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $escapade,
-            'Après-midi',
+            'Début d\'après-midi',
             2,
             '14:00',
             5000
@@ -125,7 +125,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $escapade,
-            'Fin de journée',
+            'Fin d\'après-midi',
             2,
             '16:00',
             5000
@@ -134,7 +134,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $escapade,
-            'Matin',
+            'Matinée',
             4,
             '09:00',
             9000
@@ -198,7 +198,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $evasion,
-            'Matin',
+            'Petit Matin',
             2,
             '09:00',
             8000
@@ -216,7 +216,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $evasion,
-            'Après-midi',
+            'Début d\'après-midi',
             2,
             '14:00',
             8000
@@ -225,7 +225,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $evasion,
-            'Fin de journée',
+            'Fin d\'après-midi',
             2,
             '16:00',
             8000
@@ -234,7 +234,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $evasion,
-            'Matin',
+            'Matinée',
             4,
             '09:00',
             14000
@@ -299,7 +299,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $grandLarge,
-            'Matin',
+            'Petit Matin',
             2,
             '09:00',
             11000
@@ -317,7 +317,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $grandLarge,
-            'Après-midi',
+            'Début d\'après-midi',
             2,
             '14:00',
             11000
@@ -326,7 +326,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $grandLarge,
-            'Fin de journée',
+            'Fin d\'après-midi',
             2,
             '16:00',
             11000
@@ -335,7 +335,7 @@ class CatalogueFixtures extends Fixture
         $this->createRentalRate(
             $manager,
             $grandLarge,
-            'Matin',
+            'Matinée',
             4,
             '09:00',
             20000

@@ -17,8 +17,10 @@ class BookingCancellationService
     /**
      * Checks whether a booking can be cancelled.
      */
-    private function checkCancellation(Booking $booking): void
-    {
+    private function checkCancellation(
+        Booking $booking,
+        bool $isAdmin = false,
+    ): void {
         if ($booking->getStatus() !== Booking::STATUS_CONFIRMED) {
             throw new \LogicException(
                 'Seule une réservation confirmée peut être annulée.'
@@ -34,7 +36,9 @@ class BookingCancellationService
         $now = new \DateTimeImmutable();
         $cancellationDeadline = $booking->getStartAt()->modify('-48 hours');
 
-        if ($now > $cancellationDeadline) {
+        // Allows the admin to bypass the 48-hour cancellation limit.
+        // Admin can cancel at any time in case of an internal issue.
+        if (!$isAdmin && $now > $cancellationDeadline) {
             throw new \LogicException(
                 'La réservation ne peut plus être annulée moins de 48 heures avant le départ.'
             );
@@ -44,9 +48,11 @@ class BookingCancellationService
     /**
      * Cancels a booking and requests its refund.
      */
-    public function cancel(Booking $booking): void
-    {
-        $this->checkCancellation($booking);
+    public function cancel(
+        Booking $booking,
+        bool $isAdmin = false,
+    ): void {
+        $this->checkCancellation($booking, $isAdmin);
 
         $payment = $booking->getPayment();
 

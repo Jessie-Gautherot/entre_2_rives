@@ -26,26 +26,37 @@ class RentalRateDisplayService
             }
 
             $duration = $rentalRate->getDurationHours();
-            $price = $rentalRate->getPrice();
 
-            $ratesByDuration[$duration][$price][] = $rentalRate->getLabel();
+            $ratesByDuration[$duration][] = $rentalRate;
         }
 
         ksort($ratesByDuration);
 
         $groupedRates = [];
 
-        foreach ($ratesByDuration as $duration => $prices) {
+        foreach ($ratesByDuration as $duration => $rentalRates) {
+            $prices = array_unique(
+                array_map(
+                    fn (RentalRate $rentalRate) => $rentalRate->getPrice(),
+                    $rentalRates
+                )
+            );
+
             $showLabels = count($prices) > 1;
 
             $rates = [];
 
-            foreach ($prices as $price => $labels) {
+            if ($showLabels) {
+                foreach ($rentalRates as $rentalRate) {
+                    $rates[] = [
+                        'price' => $rentalRate->getPrice(),
+                        'label' => $rentalRate->getLabel(),
+                    ];
+                }
+            } else {
                 $rates[] = [
-                    'price' => $price,
-                    'label' => $showLabels
-                        ? implode(' / ', $labels)
-                        : null,
+                    'price' => $rentalRates[0]->getPrice(),
+                    'label' => null,
                 ];
             }
 
@@ -80,3 +91,4 @@ class RentalRateDisplayService
         return $pricing;
     }
 }
+
