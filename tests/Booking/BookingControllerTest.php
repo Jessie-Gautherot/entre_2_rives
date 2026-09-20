@@ -122,6 +122,7 @@ class BookingControllerTest extends WebTestCase
                 'passengerCount' => 2,
                 'boatModel' => $boatModel->getId(),
                 'rentalRate' => $rentalRate->getId(),
+                'acceptTerms' => '1',
             ],
         );
 

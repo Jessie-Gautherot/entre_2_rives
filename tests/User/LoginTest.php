@@ -24,7 +24,7 @@ class LoginTest extends WebTestCase
     }
 
     /**
-     * Create an active test user with a hashed password
+     * Create an active test user with a hashed password.
      */
     private function createActiveUser(
         EntityManagerInterface $entityManager,
@@ -50,7 +50,7 @@ class LoginTest extends WebTestCase
     }
 
     /**
-     * Check that the test user can log in with valid credentials
+     * Check that the test user can log in with valid credentials.
      */
     public function testUserCanLoginWithValidCredentials(): void
     {
@@ -64,7 +64,7 @@ class LoginTest extends WebTestCase
 
         $this->deleteTestUser('sophie@test.fr');
 
-        // Create the test user as active
+        // Create the test user as active.
         $this->createActiveUser(
             $entityManager,
             $passwordHasher
@@ -92,7 +92,7 @@ class LoginTest extends WebTestCase
     }
 
     /**
-     * Check that the test user cannot log in with invalid password
+     * Check that the test user cannot log in with invalid password.
      */
     public function testUserCannotLoginWithInvalidPassword(): void
     {

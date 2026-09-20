@@ -40,6 +40,7 @@ class RegistrationTest extends WebTestCase
         $user->setLastName('Martin');
         $user->setPhone('06 12 34 56 78');
         $user->setEmail('registration@test.fr');
+
         // Hash the password before saving it.
         $user->setPassword(
             $passwordHasher->hashPassword(
@@ -73,14 +74,13 @@ class RegistrationTest extends WebTestCase
             'registration_form[email]' => 'registration@test.fr',
             'registration_form[plainPassword][first]' => 'Password1!',
             'registration_form[plainPassword][second]' => 'Password1!',
-            'registration_form[acceptTerms]' => '1',
         ]);
 
         $client->submit($form);
 
         self::assertResponseRedirects('/login');
 
-        // Get the created user
+        // Get the created user.
         $userRepository = static::getContainer()
             ->get(UserRepository::class);
 
@@ -88,12 +88,12 @@ class RegistrationTest extends WebTestCase
             'email' => 'registration@test.fr',
         ]);
 
-        // Check the created account
+        // Check the created account.
         self::assertNotNull($user);
         self::assertFalse($user->isActive());
         self::assertNotNull($user->getActivationToken());
 
-        // Check the hashed password
+        // Check the hashed password.
         $passwordHasher = static::getContainer()
             ->get(UserPasswordHasherInterface::class);
 
@@ -108,7 +108,7 @@ class RegistrationTest extends WebTestCase
     }
 
     /**
-     * Check that the user cannot register twice with the same email address. 
+     * Check that the user cannot register twice with the same email address.
      */
     public function testUserCannotRegisterWithExistingEmail(): void
     {
@@ -130,7 +130,6 @@ class RegistrationTest extends WebTestCase
             'registration_form[email]' => 'registration@test.fr',
             'registration_form[plainPassword][first]' => 'Password1!',
             'registration_form[plainPassword][second]' => 'Password1!',
-            'registration_form[acceptTerms]' => '1',
         ]);
 
         $client->submit($form);

@@ -33,7 +33,6 @@ class ActivationTest extends WebTestCase
         $entityManager = static::getContainer()
             ->get(EntityManagerInterface::class);
 
-        
         $this->deleteTestUser();
 
         // Create the test user as inactive with an activation token.
@@ -46,7 +45,6 @@ class ActivationTest extends WebTestCase
         $user->setActive(false);
         $user->setActivationToken('activation-token-test');
 
-        
         $entityManager->persist($user);
         $entityManager->flush();
 
