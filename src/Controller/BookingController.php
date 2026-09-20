@@ -93,6 +93,7 @@ class BookingController extends AbstractController
             $data[] = [
                 'id' => $rentalRate->getId(),
                 'label' => $rentalRate->getLabel(),
+                'durationHours' => $rentalRate->getDurationHours(),
                 'startTime' => $rentalRate->getStartTime()->format('H:i'),
                 'endTime' => $rentalRate->getEndTime()->format('H:i'),
                 'price' => $rentalRate->getPrice(),
@@ -127,6 +128,7 @@ class BookingController extends AbstractController
         $passengerCount = $request->request->getInt('passengerCount');
         $boatModelId = $request->request->getInt('boatModel');
         $rentalRateId = $request->request->getInt('rentalRate');
+        $acceptTerms = $request->request->getBoolean('acceptTerms');
 
         // Checks that all required form data has been submitted.
         if (
@@ -136,8 +138,18 @@ class BookingController extends AbstractController
             || $rentalRateId < 1
         ) {
             $this->addFlash(
-                'error',
+                'danger',
                 'Tous les champs sont obligatoires.',
+            );
+
+            return $this->redirectToRoute('app_booking_new');
+        }
+
+        // Checks that the rental conditions have been accepted.
+        if (!$acceptTerms) {
+            $this->addFlash(
+                'danger',
+                'Vous devez accepter les Conditions générales de location.',
             );
 
             return $this->redirectToRoute('app_booking_new');
@@ -148,7 +160,7 @@ class BookingController extends AbstractController
             $date = new \DateTimeImmutable($dateValue);
         } catch (\Exception) {
             $this->addFlash(
-                'error',
+                'danger',
                 'La date est invalide.',
             );
 
@@ -161,7 +173,7 @@ class BookingController extends AbstractController
         // Checks that the selected entities exist.
         if ($boatModel === null || $rentalRate === null) {
             $this->addFlash(
-                'error',
+                'danger',
                 'Le modèle ou la formule sélectionnée est invalide.',
             );
 
@@ -182,7 +194,7 @@ class BookingController extends AbstractController
             );
         } catch (\LogicException $exception) {
             $this->addFlash(
-                'error',
+                'danger',
                 $exception->getMessage(),
             );
 
@@ -233,11 +245,11 @@ class BookingController extends AbstractController
             );
         } catch (\LogicException $exception) {
             $this->addFlash(
-                'error',
+                'danger',
                 $exception->getMessage(),
             );
         }
 
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('app_account');
     }
 }

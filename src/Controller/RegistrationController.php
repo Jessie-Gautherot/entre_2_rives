@@ -21,7 +21,7 @@ class RegistrationController extends AbstractController
     /**
      * Display and handle the registration form.
      */
-    #[Route('/register', name: 'app_register')]
+    #[Route('/register', name: 'app_register', methods: ['GET', 'POST'])]
     public function register(
         Request $request,
         EntityManagerInterface $entityManager,
@@ -50,7 +50,7 @@ class RegistrationController extends AbstractController
             $user->setActive(false);
             $userActivationService->generateToken($user);
 
-            // Save the user 
+            // Save the user.
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -73,7 +73,7 @@ class RegistrationController extends AbstractController
     /**
      * Activate a user account using its activation token.
      */
-    #[Route('/activate/{token}', name: 'app_activate')]
+    #[Route('/activate/{token}', name: 'app_activate', methods: ['GET'])]
     public function activate(
         string $token,
         UserActivationService $userActivationService
@@ -81,9 +81,12 @@ class RegistrationController extends AbstractController
         $isActivated = $userActivationService->activate($token);
 
         if (!$isActivated) {
-            throw $this->createNotFoundException(
+            $this->addFlash(
+                'danger',
                 'Le lien d’activation est invalide.'
             );
+
+            return $this->redirectToRoute('app_login');
         }
 
         $this->addFlash(

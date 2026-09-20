@@ -13,7 +13,7 @@ class RateController extends AbstractController
     /**
     * Displays rental rates for all boat models.
     */
-    #[Route('/tarifs', name: 'app_rate_index')]
+    #[Route('/tarifs', name: 'app_rate_index', methods: ['GET'])]
     public function index(
         BoatModelRepository $boatModelRepository,
         RentalRateDisplayService $rentalRateDisplayService

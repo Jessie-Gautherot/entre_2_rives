@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class BoatController extends AbstractController
 {
-    #[Route('/bateaux', name: 'app_boat_index')]
+    #[Route('/bateaux', name: 'app_boat_index', methods: ['GET'])]
     public function index(BoatModelRepository $boatModelRepository): Response
     {
         $boatModels = $boatModelRepository->findAll();
@@ -28,7 +28,7 @@ class BoatController extends AbstractController
      *
      * Called by JavaScript.
      */
-    #[Route('/bateaux/recherche', name: 'app_boat_search')]
+    #[Route('/bateaux/recherche', name: 'app_boat_search', methods: ['GET'])]
     public function search(
         Request $request,
         AvailabilityService $availabilityService,
@@ -75,7 +75,7 @@ class BoatController extends AbstractController
     /**
     * Displays the details of a boat model.
     */
-    #[Route('/bateaux/{slug}', name: 'app_boat_show')]
+    #[Route('/bateaux/{slug}', name: 'app_boat_show', methods: ['GET'])]
     public function show(
         string $slug,
         BoatModelRepository $boatModelRepository,

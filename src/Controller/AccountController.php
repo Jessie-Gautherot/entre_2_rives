@@ -14,7 +14,7 @@ final class AccountController extends AbstractController
     /**
      * Displays the user's account information and bookings.
      */
-    #[Route('/mon-compte', name: 'app_account')]
+    #[Route('/mon-compte', name: 'app_account', methods: ['GET'])]
     public function index(BookingRepository $bookingRepository): Response
     {
         $user = $this->getUser();
