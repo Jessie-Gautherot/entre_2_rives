@@ -19,7 +19,7 @@ Avant de commencer, assurez-vous d’avoir installé :
 - MySQL Community Server 8.0.46
 - Stripe CLI
 - Un navigateur web
-- Un terminal compatible bash
+- Un terminal 
 
 ## 2. Cloner le projet
 
@@ -164,7 +164,7 @@ Pour effectuer une réservation :
 
 1. Sélectionner une date et indiquer le nombre de passagers.
 2. Choisir un modèle de bateau disponible.
-3. Choisir une formule de location disponible. Une formule comprend un créneau horaire, une durée et un tarif.
+3. Choisir une formule de location disponible. Une formule comprend une durée, le créneau horaire correspondant et un tarif.
 4. Valider la réservation.
 5. Procéder au paiement via Stripe en mode test.
 6. Consulter la réservation depuis la page « Mon compte ».
@@ -207,7 +207,7 @@ Utiliser la carte de test Stripe suivante :
 - Numéro : `4242 4242 4242 4242`
 - Date d’expiration : n’importe quelle date future
 - CVC : 3 chiffres au choix
-- Nom du titulaire : au choix
+- Nom et Email du titulaire : au choix
 
 Après validation du paiement, la réservation apparaît comme confirmée dans l’espace « Mon compte ».
 
