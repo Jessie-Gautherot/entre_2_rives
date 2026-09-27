@@ -21,6 +21,24 @@
     object-fit: cover;
 }
 
+@media (max-width: 749.98px) {
+    .home-intro-picture img {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 523px) {
+    .home-intro-picture img {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 444px) {
+    .home-intro-picture img {
+        min-height: 250px;
+    }
+}
+
 .home-intro-title {
     margin-bottom: 3rem;
 }
@@ -69,12 +87,30 @@
 .home-booking-picture img {
     display: block;
     width: 100%;
-    height: 400px;
+    height: 250px;
     object-fit: cover;
 }
 
+@media (min-width: 576px) {
+    .home-booking-picture img {
+        height: 350px;
+    }
+}
+
+@media (min-width: 992px) {
+    .home-booking-picture img {
+        height: 450px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .home-booking-picture img {
+        height: 400px;
+    }
+}
+
 .home-booking-content {
-    padding: 4rem;
+    padding: 1rem 3rem;
 }
 
 .home-booking-content h2 {
