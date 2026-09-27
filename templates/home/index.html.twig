@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Location de bateaux électriques - Entre 2 Rives
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/home.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <section class="home-intro">
+        <div class="row g-0">
+            <div class="col-12 col-xl-5 d-flex">
+                <div class="home-intro-content d-flex flex-column justify-content-center">
+                    <h1 class="home-intro-title">
+                        <span class="home-intro-title-main">
+                            Évadez-vous
+                        </span>
+
+                        <span class="home-intro-title-brand">
+                            Entre 2 Rives
+                        </span>
+                    </h1>
+
+                    <p class="home-intro-description">
+                        Venez découvrir les sublimes paysages du canal de Savières
+                        et du lac du Bourget. Prenez la barre d’un bateau électrique,
+                        sans permis et silencieux !
+                    </p>
+
+                    <a
+                        class="btn btn-primary-custom btn-lg-custom align-self-start"
+                        href="{{ path('app_boat_index') }}"
+                    >
+                        Découvrir nos bateaux
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-12 col-xl-7">
+                <div class="home-intro-picture">
+                    <img
+                        src="{{ asset('images/home/hero.png') }}"
+                        alt="Bateau électrique Entre 2 Rives naviguant sur le canal de Savières"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-benefits">
+        <div class="container">
+            <h2 class="home-benefits-title text-center">
+                L'aventure commence ici
+            </h2>
+
+            <div class="row g-5 justify-content-center">
+                <div class="col-12 col-md-4">
+                    <div class="home-benefits-item text-center">
+                        <h3>
+                            Jusqu'à 12 personnes
+                        </h3>
+
+                        <p>
+                            En famille ou entre amis, partagez un vrai moment
+                            de détente et d'évasion.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="home-benefits-item text-center">
+                        <h3>
+                            De 2 h à la journée
+                        </h3>
+
+                        <p>
+                            Choisissez la durée de votre balade selon vos envies.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="home-benefits-item text-center">
+                        <h3>
+                            Accessibles à tous
+                        </h3>
+
+                        <p>
+                            Faciles à piloter, nos bateaux invitent simplement
+                            à l'évasion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-booking">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-12 col-xl-7">
+                    <div class="home-booking-picture">
+                        <img
+                            src="{{ asset('images/home/home-content.png') }}"
+                            alt="Bateau électrique sur le lac du Bourget"
+                        >
+                    </div>
+                </div>
+
+                <div class="col-12 col-xl-5">
+                    <div class="home-booking-content">
+                        <h2>
+                            Prêt à larguer les amarres ?
+                        </h2>
+
+                        <p>
+                            Choisissez votre date, votre bateau et la formule
+                            qui vous convient pour profiter du lac et du canal.
+                        </p>
+
+                        <a
+                            class="btn btn-primary-custom btn-lg-custom"
+                            href="{{ path('app_booking_new') }}"
+                        >
+                            Réserver maintenant
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-contact text-center">
+        <div class="container">
+            <h2>
+                Une question avant de partir ?
+            </h2>
+
+            <p>
+                Besoin d'un renseignement sur nos bateaux,
+                nos tarifs ou votre réservation ? Contactez-nous.
+            </p>
+
+            <a
+                class="btn btn-secondary-custom"
+                href="{{ path('app_contact') }}"
+            >
+                Nous contacter
+            </a>
+        </div>
+    </section>
+{% endblock %}

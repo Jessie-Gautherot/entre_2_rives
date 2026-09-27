@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du client - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_client_index') }}"
+                class="admin-back-link"
+            >
+                ← Retour aux clients
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Détail du client</h1>
+
+                <p>
+                    {{ client.firstName }} {{ client.lastName }}
+                </p>
+            </header>
+
+            <section class="admin-detail admin-section">
+                <h2>Informations</h2>
+
+                <div class="row g-5">
+                    <div class="col-12 col-md-6">
+                        <strong>Prénom</strong>
+                        <p>{{ client.firstName }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Nom</strong>
+                        <p>{{ client.lastName }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Client depuis le</strong>
+                        <p>{{ client.createdAt|date('d/m/Y') }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>E-mail</strong>
+                        <p>{{ client.email }}</p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Compte activé</strong>
+                        <p>
+                            {% if client.active %}
+                                Oui
+                            {% else %}
+                                Non
+                            {% endif %}
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <strong>Téléphone</strong>
+                        <p>{{ client.phone }}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Réservations du client</h2>
+
+                {% if client.bookings is not empty %}
+                    <div class="table-responsive">
+                        <table class="table admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Horaire</th>
+                                    <th>Modèle</th>
+                                    <th>Formule</th>
+                                    <th>Statut réservation</th>
+                                    <th>Statut paiement</th>
+                                    <th>Voir la réservation</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {% for booking in client.bookings %}
+                                    <tr>
+                                        <td class="text-nowrap">
+                                            {{ booking.startAt|date('d/m/Y') }}
+                                        </td>
+
+                                        <td class="text-nowrap">
+                                            {{ booking.startAt|date('H \\h i') }}
+                                            —
+                                            {{ booking.endAt|date('H \\h i') }}
+                                        </td>
+
+                                        <td>
+                                            {{ booking.boatModel.name }}
+                                        </td>
+
+                                        <td>
+                                            {{ booking.rentalRateLabel }}
+                                        </td>
+
+                                        <td>
+                                            {{ booking.statusLabel }}
+                                        </td>
+
+                                        <td>
+                                            {% if booking.payment %}
+                                                {{ booking.payment.paymentStatusLabel }}
+                                            {% else %}
+                                                Aucun paiement
+                                            {% endif %}
+                                        </td>
+
+                                        <td>
+                                            <a
+                                                href="{{ path('admin_booking_show', { id: booking.id }) }}"
+                                                class="btn-admin"
+                                            >
+                                                Voir
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p>
+                        Ce client n'a aucune réservation.
+                    </p>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+{% endblock %}

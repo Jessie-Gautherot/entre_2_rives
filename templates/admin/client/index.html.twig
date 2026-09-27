@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clients - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_dashboard') }}"
+                class="admin-back-link"
+            >
+                ← Retour au tableau de bord
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Clients</h1>
+
+                <p>
+                    Consultez les informations des clients.
+                </p>
+            </header>
+
+            {% if clients is not empty %}
+                <div class="table-responsive">
+                    <table class="table admin-table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>E-mail</th>
+                                <th>Téléphone</th>
+                                <th>Compte activé par mail</th>
+                                <th>Plus d'informations</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for client in clients %}
+                                <tr>
+                                    <td>
+                                        {{ client.lastName }}
+                                    </td>
+
+                                    <td>
+                                        {{ client.firstName }}
+                                    </td>
+
+                                    <td>
+                                        {{ client.email }}
+                                    </td>
+
+                                    <td class="text-nowrap">
+                                        {{ client.phone }}
+                                    </td>
+
+                                    <td>
+                                        {% if client.active %}
+                                            oui
+                                        {% else %}
+                                            non
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        <a
+                                            href="{{ path('admin_client_show', { id: client.id }) }}"
+                                            class="btn-admin"
+                                        >
+                                            Voir
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>
+                    Aucun client enregistré.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Réserver - Entre 2 Rives
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/booking.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <div class="container booking">
+        <div class="text-center">
+            <h1>Réserver un bateau</h1>
+
+            <p class="booking-description">
+                Choisissez votre date, votre bateau et la formule qui vous convient.
+            </p>
+        </div>
+
+        <form
+            id="booking-form"
+            class="booking-form"
+            action="{{ path('app_booking_create') }}"
+            method="post"
+        >
+            <input
+                type="hidden"
+                name="_token"
+                value="{{ csrf_token('create_booking') }}"
+            >
+
+            <fieldset>
+                <legend class="visually-hidden">
+                    Informations de réservation
+                </legend>
+
+                <div class="booking-form-content">
+                    <div class="row g-5 booking-fields">
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <label
+                                for="booking-date"
+                                class="form-label"
+                            >
+                                Date de location
+                            </label>
+
+                            <input
+                                type="date"
+                                id="booking-date"
+                                name="date"
+                                class="form-control"
+                                value="{{ selectedDate }}"
+                                required
+                            >
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <label
+                                for="booking-passenger-count"
+                                class="form-label"
+                            >
+                                Nombre de passagers
+                            </label>
+
+                            <input
+                                type="number"
+                                id="booking-passenger-count"
+                                name="passengerCount"
+                                class="form-control"
+                                min="1"
+                                value="{{ selectedPassengerCount }}"
+                                required
+                            >
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <label
+                                for="booking-model"
+                                class="form-label"
+                            >
+                                Modèle de bateau
+                            </label>
+
+                            <select
+                                id="booking-model"
+                                name="boatModel"
+                                class="form-select"
+                                required
+                            >
+                                <option value="">
+                                    Choisir un modèle
+                                </option>
+
+                                {% for boatModel in boatModels %}
+                                    <option
+                                        value="{{ boatModel.id }}"
+                                        {% if selectedModel == boatModel.slug %}selected{% endif %}
+                                    >
+                                        {{ boatModel.name }} — jusqu'à {{ boatModel.capacity }} personnes
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <label
+                                for="booking-rental-rate"
+                                class="form-label"
+                            >
+                                Créneau / tarif
+                            </label>
+
+                            <select
+                                id="booking-rental-rate"
+                                name="rentalRate"
+                                class="form-select"
+                                required
+                            >
+                                <option value="">
+                                    Choisir une formule
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <p
+                        id="booking-availability-status"
+                        class="visually-hidden"
+                        aria-live="polite"
+                    ></p>
+
+                    <div class="booking-actions">
+                        <div class="form-check">
+                            <input
+                                type="checkbox"
+                                id="booking-accept-terms"
+                                name="acceptTerms"
+                                class="form-check-input"
+                                value="1"
+                                required
+                            >
+
+                            <label
+                                class="form-check-label"
+                                for="booking-accept-terms"
+                            >
+                                J’ai lu et j’accepte les
+                                <a
+                                    href="{{ path('app_rental_conditions') }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Conditions générales de location
+                                </a>.
+                            </label>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary-custom btn-lg-custom"
+                        >
+                            Valider votre réservation
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/booking.js') }}"></script>
+{% endblock %}

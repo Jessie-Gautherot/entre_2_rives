@@ -1,0 +1,77 @@
+.rate {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+.rate-header {
+    text-align: center;
+}
+
+.rate-capacity {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgb(51 75 94 / 25%);
+}
+
+.rate .card-title {
+    font-size: 1.4rem;
+}
+
+.rate-description {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+}
+
+.rate-card {
+    min-height: 450px;
+    height: 100%;
+    color: var(--color-primary);
+}
+
+.rate-card .card-body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.rate-groups {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.rate-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.rate-duration {
+    text-align: left;
+}
+
+.rate-label {
+    text-align: right;
+}
+
+.rate-price {
+    margin: 0;
+    text-align: right;
+    font-weight: 600;
+}
+
+.rate-group {
+    padding: 1rem 0;
+}
+
+.rate-group .rate-row {
+    padding: 0.5rem 0;
+}
+
+.rate-card .btn-primary-custom {
+    align-self: center;
+    margin-top: auto;
+}
+
+.rate-empty {
+    text-align: center;
+}

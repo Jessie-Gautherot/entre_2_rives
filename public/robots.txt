@@ -1,0 +1,13 @@
+User-agent: *
+
+Allow: /
+
+Disallow: /admin
+Disallow: /mon-compte
+Disallow: /reservation/formules-disponibles
+
+# Endpoint JSON de recherche des bateaux disponibles
+Disallow: /bateaux/recherche
+
+Disallow: /stripe
+Disallow: /activate

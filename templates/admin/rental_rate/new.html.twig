@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une formule - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_rental_rate_index') }}"
+                class="admin-back-link"
+            >
+                ← Retour aux tarifs de location
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Créer une formule</h1>
+
+                <p>
+                    Ajoutez une nouvelle formule de location.
+                </p>
+            </header>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-5">
+                    {{ form_start(form, {
+                        attr: {
+                            class: 'admin-form admin-rate-form'
+                        }
+                    }) }}
+
+                        <div class="admin-form-field">
+                            {{ form_label(form.boatModel) }}
+                            {{ form_widget(form.boatModel, {
+                                attr: {
+                                    class: 'form-select'
+                                }
+                            }) }}
+                            {{ form_errors(form.boatModel) }}
+                        </div>
+
+                        <div class="admin-form-field">
+                            {{ form_label(form.label) }}
+                            {{ form_widget(form.label, {
+                                attr: {
+                                    class: 'form-control'
+                                }
+                            }) }}
+                            {{ form_errors(form.label) }}
+                        </div>
+
+                        <div class="admin-form-field">
+                            {{ form_label(form.durationHours) }}
+                            {{ form_widget(form.durationHours, {
+                                attr: {
+                                    class: 'form-control'
+                                }
+                            }) }}
+                            {{ form_errors(form.durationHours) }}
+                        </div>
+
+                        <div class="admin-form-field">
+                            {{ form_label(form.startTime) }}
+                            {{ form_widget(form.startTime, {
+                                attr: {
+                                    class: 'form-control'
+                                }
+                            }) }}
+                            {{ form_errors(form.startTime) }}
+                        </div>
+
+                        <div class="admin-form-field">
+                            {{ form_label(form.price) }}
+                            {{ form_widget(form.price, {
+                                attr: {
+                                    class: 'form-control'
+                                }
+                            }) }}
+                            {{ form_errors(form.price) }}
+                        </div>
+
+                        <div class="admin-form-actions">
+                            <button
+                                type="submit"
+                                class="btn btn-primary-custom"
+                            >
+                                Créer la formule
+                            </button>
+                        </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

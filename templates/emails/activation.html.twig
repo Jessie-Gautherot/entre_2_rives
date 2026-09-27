@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Activation de votre compte</title>
+</head>
+<body>
+
+    <h1>Bienvenue sur Entre 2 Rives !</h1>
+
+    <p>
+        Bonjour {{ user.firstName }},
+    </p>
+
+    <p>
+        Merci pour votre inscription.
+    </p>
+
+    <p>
+        Cliquez sur le lien ci-dessous pour activer votre compte :
+    </p>
+
+    <p>
+        <a href="{{ activationLink }}">
+            Activer mon compte
+        </a>
+    </p>
+
+    <p>
+        Si le lien ne fonctionne pas, copiez cette adresse dans votre navigateur :
+    </p>
+
+    <p>
+        {{ activationLink }}
+    </p>
+
+    <p>
+        À bientôt sur Entre 2 Rives !
+    </p>
+
+</body>
+</html>

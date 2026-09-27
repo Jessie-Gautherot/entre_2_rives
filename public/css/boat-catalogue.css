@@ -1,0 +1,67 @@
+.boat-catalogue {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+.boat-catalogue-description {
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+}
+
+.boat-search-form {
+    margin-bottom: 3rem;
+}
+
+.boat-search-title {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+    font-size: 1rem;
+}
+
+.boat-search-form .form-label {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+
+.boat-search-form .form-control {
+    height: 2rem;
+    color: var(--color-primary);
+}
+
+.boat-search-form .btn-primary-custom {
+    margin-bottom: 0;
+}
+
+.boat-catalogue .card {
+    color: var(--color-primary);
+}
+
+.boat-catalogue-image {
+    padding: 1rem;
+}
+
+.boat-catalogue .card-body {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.boat-catalogue-card-title {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.boat-catalogue-capacity {
+    margin-bottom: 1.2rem;
+}
+
+.boat-catalogue .card-text {
+    margin-bottom: 2rem;
+}
+
+.boat-catalogue-card-button {
+    margin-top: auto;
+}
+
+
+

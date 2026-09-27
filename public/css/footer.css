@@ -1,0 +1,112 @@
+/* FOOTER */
+
+.site-footer {
+    padding: 3rem 0 1.5rem;
+    color: var(--color-background);
+    background-color: var(--color-primary);
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* FOOTER BRAND */
+
+.footer-brand {
+    text-align: center;
+}
+
+.footer-site-name {
+    margin-bottom: 0.75rem;
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.footer-tagline {
+    font-size: 1.2rem;
+}
+
+/* FOOTER SEPARATORS */
+
+.footer-brand,
+.footer-navigation,
+.footer-section {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* FOOTER NAVIGATION */
+
+.footer-navigation-list {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer a {
+    color: var(--color-background);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+    color: var(--color-accent);
+}
+
+/* FOOTER CONTENT */
+
+.footer-section {
+    text-align: center;
+}
+
+.footer-title {
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.footer-address {
+    line-height: 1.8;
+}
+
+.footer-legal-list {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    list-style: none;
+}
+
+/* FOOTER BOTTOM */
+
+.footer-bottom {
+    text-align: center;
+}
+
+/* RESPONSIVE FOOTER */
+
+@media (max-width: 767.98px) {
+
+    .site-footer {
+        padding: 2.5rem 1rem 1.5rem;
+    }
+
+    
+
+    .footer-address,
+    .footer-legal-list {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .footer-bottom p {
+        font-size: 0.95rem;
+    }
+}

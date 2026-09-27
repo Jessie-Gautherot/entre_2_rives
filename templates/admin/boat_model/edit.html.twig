@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un modèle - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_boat_model_index') }}"
+                class="admin-back-link"
+            >
+                ← Retour aux modèles
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Modifier le modèle</h1>
+
+                <p>
+                    {{ boatModel.name }} — {{ boatModel.capacity }} personnes
+                </p>
+            </header>
+
+            <section class="admin-form">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-7">
+                        {{ form_start(form) }}
+
+                            <div class="admin-form-field">
+                                {{ form_label(form.name) }}
+                                {{ form_widget(form.name, {
+                                    attr: {
+                                        class: 'form-control'
+                                    }
+                                }) }}
+                                {{ form_errors(form.name) }}
+                            </div>
+
+                            <div class="admin-form-field">
+                                {{ form_label(form.description) }}
+                                {{ form_widget(form.description, {
+                                    attr: {
+                                        class: 'form-control',
+                                        rows: 6
+                                    }
+                                }) }}
+                                {{ form_errors(form.description) }}
+                            </div>
+
+                            <div class="admin-form-actions">
+                                <button
+                                    type="submit"
+                                    class="btn-admin"
+                                >
+                                    Enregistrer les modifications
+                                </button>
+                            </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock %}

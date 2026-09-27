@@ -1,0 +1,37 @@
+.contact {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+.contact h1 {
+    margin-bottom: 1rem;
+}
+
+.contact-intro {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.contact-form {
+    padding: 2rem;
+    border: 1px solid rgba(51, 75, 94, 0.2);
+    border-radius: 0.5rem;
+}
+
+.contact-field {
+    margin-bottom: 1rem;
+}
+
+.contact .form-label {
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.contact .form-control {
+    color: var(--color-primary);
+}
+
+.contact .btn-primary-custom {
+    margin-bottom: 0;
+}

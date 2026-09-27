@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Tarifs de location - Entre 2 Rives
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link
+        rel="stylesheet"
+        href="{{ asset('css/admin/admin.css') }}"
+    >
+{% endblock %}
+
+{% block body %}
+    <div class="admin-page">
+        <div class="container">
+            <a
+                href="{{ path('admin_dashboard') }}"
+                class="admin-back-link"
+            >
+                ← Retour au tableau de bord
+            </a>
+
+            <header class="admin-page-header text-center">
+                <h1>Tarifs de location</h1>
+
+                <p>
+                    Gérez les formules proposées.
+                </p>
+            </header>
+
+            <div class="admin-section">
+                <a
+                    href="{{ path('admin_rental_rate_new') }}"
+                    class="btn btn-primary-custom"
+                >
+                    Créer une formule
+                </a>
+            </div>
+
+            {% if rentalRatesByModel is not empty %}
+                {% for modelName, rentalRates in rentalRatesByModel %}
+                    <section class="admin-section">
+                        <h2>{{ modelName }}</h2>
+
+                        <div class="table-responsive">
+                            <table class="table admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Formule</th>
+                                        <th>Durée</th>
+                                        <th>Horaire</th>
+                                        <th>Prix</th>
+                                        <th>Disponibilité</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for rentalRate in rentalRates %}
+                                        <tr>
+                                            <td>
+                                                {{ rentalRate.label }}
+                                            </td>
+
+                                            <td>
+                                                {{ rentalRate.durationHours }} h
+                                            </td>
+
+                                            <td class="text-nowrap">
+                                                {{ rentalRate.startTime|date('H \\h i') }}
+                                                —
+                                                {{ rentalRate.endTime|date('H \\h i') }}
+                                            </td>
+
+                                            <td class="text-nowrap">
+                                                {{ (rentalRate.price / 100)|number_format(2, ',', ' ') }} €
+                                            </td>
+
+                                            <td>
+                                                {% if rentalRate.active %}
+                                                    Disponible
+                                                {% else %}
+                                                    Indisponible
+                                                {% endif %}
+                                            </td>
+
+                                            <td>
+                                                <div class="admin-actions">
+                                                    <a
+                                                        href="{{ path('admin_rental_rate_edit', { id: rentalRate.id }) }}"
+                                                        class="btn-admin"
+                                                    >
+                                                        Modifier
+                                                    </a>
+
+                                                    <form
+                                                        method="post"
+                                                        action="{{ path('admin_rental_rate_toggle_availability', { id: rentalRate.id }) }}"
+                                                        {% if rentalRate.active %}
+                                                            onsubmit="return confirm('Êtes-vous sûr de vouloir rendre cette formule indisponible ?');"
+                                                        {% else %}
+                                                            onsubmit="return confirm('Êtes-vous sûr de vouloir rendre cette formule disponible ?');"
+                                                        {% endif %}
+                                                    >
+                                                        <input
+                                                            type="hidden"
+                                                            name="_token"
+                                                            value="{{ csrf_token('toggle_rental_rate_' ~ rentalRate.id) }}"
+                                                        >
+
+                                                        <button
+                                                            type="submit"
+                                                            class="btn-admin"
+                                                        >
+                                                            {% if rentalRate.active %}
+                                                                Rendre indisponible
+                                                            {% else %}
+                                                                Rendre disponible
+                                                            {% endif %}
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                {% endfor %}
+            {% else %}
+                <p>
+                    Aucune formule enregistrée.
+                </p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Politique de confidentialité - Entre 2 Rives{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/legal.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="legal-page">
+        <div class="container">
+            <h1 class="text-center">Politique de confidentialité</h1>
+
+            <div class="legal-intro">
+                <p class="legal-page-notice fw-bold">
+                    Projet pédagogique fictif <br>
+                    L'activité commerciale présentée sur ce site est fictive.
+                </p>
+
+                <p>
+                    La présente politique de confidentialité explique quelles données
+                    personnelles peuvent être utilisées lors de l'utilisation du site
+                    Entre 2 Rives et dans quel but.
+                </p>
+            </div>
+
+            <section class="legal-section">
+                <h2>1. Données personnelles collectées</h2>
+
+                <p>
+                    Lors de la création et de l'utilisation d'un compte,
+                    Entre 2 Rives peut recueillir les informations suivantes :
+                </p>
+
+                <ul>
+                    <li>prénom ;</li>
+                    <li>nom ;</li>
+                    <li>adresse e-mail ;</li>
+                    <li>numéro de téléphone ;</li>
+                    <li>mot de passe, enregistré sous une forme sécurisée ;</li>
+                    <li>informations liées aux réservations effectuées sur le site.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>2. Utilisation des données</h2>
+
+                <p>
+                    Les données personnelles sont utilisées uniquement pour permettre
+                    le fonctionnement des services proposés par l'application.
+                </p>
+
+                <p>Elles permettent notamment de :</p>
+
+                <ul>
+                    <li>créer et gérer un compte utilisateur ;</li>
+                    <li>permettre la connexion au compte ;</li>
+                    <li>gérer les réservations ;</li>
+                    <li>afficher l'historique des réservations dans l'espace personnel ;</li>
+                    <li>envoyer les e-mails nécessaires au fonctionnement du compte.</li>
+                </ul>
+            </section>
+
+            <section class="legal-section">
+                <h2>3. Paiement</h2>
+
+                <p>
+                    Le parcours de réservation utilise Stripe afin de simuler
+                    le paiement en ligne.
+                </p>
+
+                <p>
+                    Les informations bancaires saisies sur l'interface de paiement
+                    ne sont pas enregistrées par Entre 2 Rives.
+                </p>
+
+                <p class="legal-page-notice fw-bold">
+                    Stripe est utilisé uniquement en mode test dans le cadre
+                    de ce projet pédagogique. Aucun paiement réel n'est effectué
+                    et aucun montant réel n'est prélevé.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>4. Destinataires des données</h2>
+
+                <p>
+                    Les données renseignées sur le site sont utilisées uniquement
+                    dans le cadre du fonctionnement de l'application Entre 2 Rives.
+                </p>
+
+                <p>
+                    Certaines fonctionnalités peuvent nécessiter l'utilisation
+                    de services externes, notamment pour l'envoi des e-mails
+                    et la simulation du paiement.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>5. Conservation des données</h2>
+
+                <p>
+                    Les données sont conservées uniquement pendant la durée nécessaire
+                    au fonctionnement et à la démonstration du projet pédagogique.
+                </p>
+
+                <p>
+                    Entre 2 Rives n'ayant pas d'activité commerciale réelle,
+                    les durées légales de conservation liées à une véritable activité
+                    de location ne sont pas appliquées comme elles le seraient
+                    par une entreprise réelle.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>6. Sécurité des données</h2>
+
+                <p>
+                    Des mesures techniques sont mises en œuvre afin de limiter
+                    l'accès non autorisé aux données enregistrées dans l'application.
+                </p>
+
+                <p>
+                    Les mots de passe des utilisateurs ne sont pas conservés
+                    en clair dans la base de données.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>7. Droits des utilisateurs</h2>
+
+                <p>
+                    Les utilisateurs disposent notamment de droits concernant
+                    leurs données personnelles, tels que le droit d'accès,
+                    de rectification ou de suppression de leurs données,
+                    dans les conditions prévues par la réglementation applicable.
+                </p>
+
+                <p>
+                    Pour toute demande concernant les données personnelles,
+                    l'utilisateur peut contacter  :
+                </p>
+
+                <address>
+                    Jessie Gautherot<br>
+                    Téléphone : 06 74 71 43 25 <br>
+                </address>
+
+                <p class="legal-page-notice fw-bold">
+                    Entre 2 Rives étant un projet pédagogique fictif,
+                    l'entreprise présentée sur le site est fictive.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>8. Cookies</h2>
+
+                <p>
+                    Entre 2 Rives n'utilise pas de cookies publicitaires
+                    ni de dispositif de suivi à des fins commerciales.
+                </p>
+
+                <p>
+                    Des cookies strictement nécessaires au fonctionnement
+                    de l'application peuvent toutefois être utilisés,
+                    notamment pour permettre la gestion de la session utilisateur.
+                </p>
+            </section>
+
+            <section class="legal-section">
+                <h2>9. Évolution de la politique de confidentialité</h2>
+
+                <p>
+                    La présente politique de confidentialité peut être modifiée
+                    afin de tenir compte des évolutions du projet et des fonctionnalités
+                    proposées par l'application.
+                </p>
+            </section>
+
+            <p class="legal-page-notice fw-bold">
+                Entre 2 Rives est un projet fictif réalisé dans un cadre pédagogique.
+                Il ne s'agit pas d'un service commercial réel de location de bateaux.
+            </p>
+        </div>
+    </div>
+{% endblock %}
